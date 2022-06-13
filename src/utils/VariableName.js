@@ -1,4 +1,4 @@
-export const apiURL = process.env.NODE_ENV !== 'production' ? 'http://localhost:8080/api' : 'https://rsbotserver.herokuapp.com/api'
+export const apiURL = process.env.NODE_ENV !== 'production' ? 'http://localhost:8080/api' : 'https://thtserver.herokuapp.com/api'
 //http://localhost:3030/api
 export const LOCAL_STORAGE_TOKEN_NAME = 'dlm-admin'
 
