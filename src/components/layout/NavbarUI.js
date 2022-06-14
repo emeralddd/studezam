@@ -80,7 +80,7 @@ const NavbarUI = () => {
         <>
             <div className="text-center border-b-2 py-3">
                 <div className="font-extrabold text-5xl pb-2">
-                    Stexam
+                    STUDEZAM
                 </div>
 
                 <div className="flex justify-center font-medium">

@@ -345,7 +345,7 @@ const Contest = (props) => {
                             <div className="group-hover:flex flex-wrap gap-2 justify-center hidden">
                                 {
                                     //Array(dataState.data.number-1)
-                                    [...Array(dataState.data.number-1)].map((e, i) => 
+                                    [...Array(50)].map((e, i) => 
                                         <a href={`#${i}`} className={`flex text-center w-10 p-2 ${chooseAnswer[i]===0?`bg-orange-400`:`bg-orange-600`} content-center rounded-lg`}>
                                             <div className="text-white font-bold align-middle text-lg">
                                                 {i+1<10?'0':''}{i+1}

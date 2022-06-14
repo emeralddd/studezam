@@ -39,7 +39,7 @@ const Landing = () => {
                 <div class="sm:max-w-[60rem]">
                     <div class="text-center border-b-2 py-3">
                         <div class="font-extrabold text-5xl pb-2">
-                            VELTS
+                            STUDEZAM
                         </div>
 
                         <div class="flex justify-center font-medium">
