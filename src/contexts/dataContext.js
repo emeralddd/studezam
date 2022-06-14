@@ -448,8 +448,6 @@ const DataContextProvider = ({children}) => {
             payload: task
         })
 
-        // console.log(task)
-
         return task
     }
 
@@ -497,8 +495,6 @@ const DataContextProvider = ({children}) => {
         try {
             const response = await axios.get(`${apiURL}/public/getContests`)
 
-            console.log(response.data.payload)
-
             if(response.data.success) {
                 dispatchContest({
                     type: CONTEST_LOADED_SUCCESS,
@@ -532,9 +528,15 @@ const DataContextProvider = ({children}) => {
     }
 
     const findContest = async tag => {
+        console.log(tag)
+
+        console.log(contestState.contests)
+
         const task = contestState.contests.find(t => {
             return t.tag === tag
         })
+
+        console.log(task)
 
         dispatchContest({
             type: FIND_CONTEST, 

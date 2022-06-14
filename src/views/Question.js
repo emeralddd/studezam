@@ -110,7 +110,6 @@ const Question = (props) => {
                 <div className="shadow-sm p-6 my-3 flex flex-col justify-center">
                     <div className="text-lg font-light mb-2">
                         {dataState.data.text}
-                        Curabitur suscipit sed diam ac vehicula. Aliquam semper nulla arcu, congue tincidunt justo placerat vitae. Duis eu gravida purus. Maecenas facilisis laoreet ullamcorper. Fusce eget sagittis tortor. Mauris et augue lobortis, pharetra lectus sed, posuere velit. Cras a lacus eu ex accumsan porta. Fusce id pretium odio, id ornare neque. Sed dictum accumsan dui vel sodales. Praesent molestie elementum egestas. Pellentesque fermentum maximus nisi, quis blandit dui malesuada et. Donec pellentesque purus nulla, vel ultricies dolor lobortis sit amet. Donec ex erat, ultricies quis velit nec, lobortis vestibulum orci. Nullam eget egestas justo, in lacinia mi.
                     </div>
 
                     <div className="text-xl font-medium">

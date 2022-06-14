@@ -30,29 +30,6 @@ const Homepage = () => {
         action()
     }, [])
 
-    const navlist = [
-        {
-            name:'Homepage',
-            href:'/'
-        },
-        {
-            name:'Questions',
-            href:'/questions'
-        },
-        {
-            name:'Thematics',
-            href:'/thematics'
-        },
-        {
-            name:'Tasks',
-            href:'/tasks'
-        },
-        {
-            name:'Lessons',
-            href:'/lessons'
-        }
-    ]
-
     // console.log(contests)
 
     return (
@@ -119,7 +96,7 @@ const Homepage = () => {
                                                 </div>
                                             </Link>
 
-                                            <Link to={`/contest/${c.tag}/explaination`}>
+                                            <Link to={`/contest/${c.tag}/explanation`}>
                                                 <div class="shadow py-2 px-3 w-fit text-orange-400 hover:bg-orange-400 hover:text-white border-2 font-bold ml-2">
                                                     Xem hướng dẫn
                                                 </div>

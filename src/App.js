@@ -52,8 +52,8 @@ function App() {
               <PublicRoute path='/lesson/:tag' component={Lesson} />
               <PublicRoute exact path='/lessons' component={Lesson} />
               <ProtectedRoute path='/contest/new/:difficulty' component={Contest} />
+              <ProtectedRoute path='/contest/:tagor_id/explanation' component={Contest} />
               <ProtectedRoute path='/contest/:tagor_id' component={Contest} />
-              <ProtectedRoute path='/contest/:tagor_id/explaination' component={Contest} />
             </Switch>
           </Router>
         </UserContextProvider>

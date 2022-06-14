@@ -8,7 +8,7 @@ const PublicRoute = ({component:Component,...rest}) => {
             return (
             <>
                 <div className="flex justify-center">
-                    <div className="sm:w-[60rem]">
+                    <div className="sm:w-[70rem]">
                         <NavbarUI />
                         <Component {...rest} {...props} /> 
                         <Footer />
