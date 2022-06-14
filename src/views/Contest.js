@@ -8,6 +8,7 @@ import { DataContext } from "../contexts/dataContext"
 import { apiURL } from "../utils/VariableName"
 import CROSS from '../assets/x-lg.svg'
 import TICK from '../assets/check2.svg'
+import ScrollToTop from "../components/routing/ScrollToTop"
 
 const Contest = (props) => {
 
@@ -63,7 +64,7 @@ const Contest = (props) => {
             }
         }
 
-        console.log('hello')
+        // console.log('hello')
         
         action()
     }, [])
@@ -98,8 +99,11 @@ const Contest = (props) => {
             submitedAnswer:chooseAnswer,
             type:dataState.data.type
         })
+        
+        // window.scrollTo(0, 0)
 
-        console.log(response)
+
+        // console.log(response)
 
         if(!response.data.success) {
             setData({
@@ -117,6 +121,8 @@ const Contest = (props) => {
             data:response.data.payload,
             finish: true
         })
+
+        
 	}
 
     if(props.match.path === '/contest/new/:difficulty') {
@@ -149,21 +155,21 @@ const Contest = (props) => {
                                 </div>
 
                                 <div className="text-lg font-light mb-2">
-                                    {t.text}
+                                    <div dangerouslySetInnerHTML={{__html:t.text }}  />
                                 </div>
 
                                 {
                                     t.questions.map(q => (
                                         <>
                                             <div className="text-lg font-medium pt-2">
-                                                Question {q.index+1}. {q.question}
+                                                Question {q.index+1}. <span dangerouslySetInnerHTML={{__html:q.question }}  />
                                             </div>
                                             {
                                                 <div className="text-lg font-light">
                                                     {
                                                         q.choices.map((t,index) => (
                                                             <div>
-                                                                {char[index]}. {t}
+                                                                {char[index]}. <span dangerouslySetInnerHTML={{__html:t }}  />
                                                             </div>
                                                         ))
                                                     }
@@ -185,6 +191,8 @@ const Contest = (props) => {
             )
         } else {
             if(dataState.finish) {
+                // document.getElementById("root").scroll(0,0)
+
                 body = (
                     <>  
                         <div className="py-10 text-3xl font-semibold text-center">
@@ -211,14 +219,14 @@ const Contest = (props) => {
                                     </div>
 
                                     <div className="text-lg font-light mb-2">
-                                        {t.text}
+                                        <div dangerouslySetInnerHTML={{__html:t.text }}  />
                                     </div>
 
                                     {
                                         t.questions.map(q => (
                                             <>
                                                 <div className="text-lg font-medium pt-2">
-                                                    Question {q.index}. {q.question}
+                                                    Question {q.index}. <span dangerouslySetInnerHTML={{__html:q.question }}  />
                                                 </div>
                                                 
                                                 <div className="text-lg font-light">
@@ -230,14 +238,14 @@ const Contest = (props) => {
                                                                         (chooseAnswer[q.index-1] === q.answer) ? (
                                                                             <>
                                                                                 <div className="text-green-500">
-                                                                                    {char[index]}. {t}
+                                                                                    {char[index]}. <span dangerouslySetInnerHTML={{__html:t }}  /> 
                                                                                 </div>
                                                                                 <img src={TICK} className='ml-1 w-4 h-auto' />
                                                                             </>
                                                                         ) : (
                                                                             <>
                                                                                 <div className="text-red-500">
-                                                                                    {char[index]}. {t}
+                                                                                    {char[index]}. <span dangerouslySetInnerHTML={{__html:t }}  />
                                                                                 </div>
                                                                                 <img src={CROSS} className='ml-1 w-4 h-auto' />
                                                                             </>
@@ -247,7 +255,7 @@ const Contest = (props) => {
                                                                 </div>
                                                             ) : (
                                                                 <div>
-                                                                    {char[index]}. {t}
+                                                                    {char[index]}. <span dangerouslySetInnerHTML={{__html:t }}  />
                                                                 </div>
                                                             )
                                                         ))
@@ -285,10 +293,16 @@ const Contest = (props) => {
                                 </>
                             ))
                         }
+                        <button type='button' className='transition duration-200 shadow-xl border px-4 py-2 text-center font-bold text-lg'>
+                            <a href="#top" className="text-black">
+                                Xem điểm
+                            </a>
+                        </button>
+
                     </>
                 )
             } else {
-                console.log('ren')
+                // console.log('ren')
                 body = (
                     <div className="">  
                         <div>
@@ -304,7 +318,7 @@ const Contest = (props) => {
                                         </div>
 
                                         <div className="text-lg font-light mb-2">
-                                            {t.text}
+                                            <div dangerouslySetInnerHTML={{__html:t.text }}  />
                                         </div>
 
                                         {
@@ -313,8 +327,7 @@ const Contest = (props) => {
                                                     <a name={q.index}>
                                                     </a>
                                                     <div className="text-lg font-medium pt-2">
-                                                        Question {q.index+1}. {q.question}
-                                                        {/* {chooseAnswer[q.index]} */}
+                                                        Question {q.index+1}. <span dangerouslySetInnerHTML={{__html:q.question }}  />
                                                     </div>
                                 
                                                     <div className="text-lg font-light">
@@ -323,7 +336,7 @@ const Contest = (props) => {
                                                                 <div>
                                                                     <input type="radio" name={q.index} value={index} id={`${index}-${q.index}`} onChange={onChangeDataForm} className='h-3 bg-orange-400' />
                                                                     <label className='ml-2' htmlFor={`${index}-${q.index}`}>
-                                                                        {char[index]}. {t}
+                                                                        {char[index]}. <span dangerouslySetInnerHTML={{__html:t }}  />
                                                                     </label>
                                                                 </div>
                                                             ))
@@ -338,14 +351,14 @@ const Contest = (props) => {
                             }
 
                             <button type='button' onClick={onSubmit} className='transition duration-200 shadow-xl border px-4 py-2 text-center font-bold text-lg'>
-                                Submit   
+                                Submit
                             </button>
                         </div>
                         <div className="transition-[width_3s] w-24 hover:w-80 border-orange-400 border-y-2 border-l-2 fixed top-10 right-0 bottom-10 bg-white p-4 overflow-y-auto group ">
                             <div className="group-hover:flex flex-wrap gap-2 justify-center hidden">
                                 {
                                     //Array(dataState.data.number-1)
-                                    [...Array(50)].map((e, i) => 
+                                    [...Array(dataState.data.number-1)].map((e, i) => 
                                         <a href={`#${i}`} className={`flex text-center w-10 p-2 ${chooseAnswer[i]===0?`bg-orange-400`:`bg-orange-600`} content-center rounded-lg`}>
                                             <div className="text-white font-bold align-middle text-lg">
                                                 {i+1<10?'0':''}{i+1}

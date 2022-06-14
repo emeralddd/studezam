@@ -4,6 +4,7 @@ import { AuthContext } from '../../contexts/authContext'
 import LoadingSpinner from '../items/LoadingSpinner'
 import NavbarUI from '../layout/NavbarUI'
 import Footer from '../layout/Footer'
+import ScrollToTop from './ScrollToTop'
 
 const ProtectedRoute = ({component:Component,...rest}) => {
 
@@ -21,6 +22,8 @@ const ProtectedRoute = ({component:Component,...rest}) => {
         <>
             <div className="flex justify-center">
                 <div className="sm:w-[70rem]">
+                    <a name='top' />
+                    <ScrollToTop />
                     <NavbarUI />
                     <Component {...rest} {...props} /> 
                     <Footer />

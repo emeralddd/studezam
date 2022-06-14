@@ -81,7 +81,11 @@ const Question = (props) => {
                         <a href={`/question/${q._id}`}>
                             <div className="shadow-sm p-6 my-3 flex flex-col justify-center">
                                 <div className="text-lg font-medium">
-                                    {q.question}
+                                    { q.question === ' ' || q.question[0]==='#' ?
+                                        <div dangerouslySetInnerHTML={{__html:q.choices.join(' ')}} />
+                                    :
+                                        <div dangerouslySetInnerHTML={{__html:q.question }}  />
+                                    }
                                 </div>
                                 <div className="text-sm font-light">
                                     Difficulty: {q.difficulty}/4900
@@ -109,18 +113,19 @@ const Question = (props) => {
 
                 <div className="shadow-sm p-6 my-3 flex flex-col justify-center">
                     <div className="text-lg font-light mb-2">
-                        {dataState.data.text}
+                        <div dangerouslySetInnerHTML={{__html:dataState.data.text }}  />
                     </div>
 
                     <div className="text-xl font-medium">
-                        {dataState.data.question}
+                        <div dangerouslySetInnerHTML={{__html:dataState.data.question }}  />
                     </div>
                     {
                         <div className="text-lg font-light">
                             {
                                 dataState.data.choices.map((t,index) => (
                                     <div>
-                                        {char[index]}. {t}
+                                        {char[index]}. <span dangerouslySetInnerHTML={{__html:t }}  />
+
                                     </div>
                                 ))
                             }

@@ -92,7 +92,7 @@ const Task = (props) => {
         body = (
             <>
                 <div className="py-10 text-4xl font-semibold text-center">
-                    Thematic: {dataState.data.label}
+                    Task: {dataState.data.label}
                 </div>
                 {
                     dataState.data.thematics.map(q => (
