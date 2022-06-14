@@ -14,19 +14,13 @@ import AuthContextProvider from './contexts/authContext'
 import DataContextProvider from './contexts/dataContext'
 import UserContextProvider from './contexts/userContext'
 
-// import Single from './views/Single'
-import './App.css'
-import './css/headfoot.css'
-import './css/homepage.css'
-import './css/dashboard.css'
-import './css/sidebar.css'
-import './css/extend.css'
 import Question from './views/Question'
 import Task from './views/Task'
 import Thematic from './views/Thematic'
 import Lesson from './views/Lesson'
 import Contest from './views/Contest'
 import PublicRoute from './components/routing/PublicRoute'
+import NotFound from './views/NotFound'
 
 function App() {
   return (
@@ -40,6 +34,7 @@ function App() {
               <Route exact path='/logout' component={Logout} />
               <Route exact path='/' component={Homepage} />
               <Route path='/landing' component={Landing} />
+              <Route exact path='/404' component={NotFound} />
               <AdminRoute path='/admin' component={Dashboard} />
               <TeacherRoute path='/teacher' component={Teacher} />
               <PublicRoute exact path='/questions' list='true' component={Question} />
@@ -48,7 +43,6 @@ function App() {
               <PublicRoute path='/task/:tag' component={Task} />
               <PublicRoute exact path='/thematics' list='true' component={Thematic} />
               <PublicRoute path='/thematic/:tag' component={Thematic} />
-              <PublicRoute exact path='/lessons' list='true' component={Lesson} />
               <PublicRoute path='/lesson/:tag' component={Lesson} />
               <PublicRoute exact path='/lessons' component={Lesson} />
               <ProtectedRoute path='/contest/new/:difficulty' component={Contest} />

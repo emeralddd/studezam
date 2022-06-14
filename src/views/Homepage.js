@@ -13,24 +13,21 @@ const Homepage = () => {
         getContests
     } = useContext(DataContext)
 
-    const [dataState,setData] = useState({
-        loading: true,
-        code:0,
-        data: null
-    })
+    const [dataState,setData] = useState(5)
 
     useEffect(() => {
         const action = async () => {
             await getContests()
-            setData({
-                loading:false
-            })
         }
         
         action()
     }, [])
 
     // console.log(contests)
+
+    const onChangeDataForm = event => {
+        setData(event.target.value)
+    }
 
     return (
         <>
@@ -44,12 +41,16 @@ const Homepage = () => {
                                 TAO DE NGAY
                             </div>
 
-                            <div className="text-2xl font-medium my-10">
-                                <input type="range" value="5" min="0" max="9" className="w-40 h-2 rounded-lg appearance-none cursor-pointer dark:bg-black" />
+                            <div className="text-2xl font-medium mt-10">
+                                <input type="range" value={dataState} min="0" max="9" className="w-40 h-2 rounded-lg appearance-none cursor-pointer border-orange-400 border-2" onChange={onChangeDataForm} />
+                            </div>
+
+                            <div className='font-light mb-10'>
+                                Độ khó: {dataState*100}/900
                             </div>
 
                             <div className="">
-                                <a href="#">
+                                <a href={`/contest/new/${dataState*100}`}>
                                     <div className="shadow py-4 px-7 w-fit bg-orange-400 text-white border-2 text-3xl font-bold">
                                         TAO DE
                                     </div>

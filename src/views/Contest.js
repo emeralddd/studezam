@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect } from "react"
 import { useState } from "react"
 import { useContext } from "react"
-import { Redirect } from "react-router-dom"
+import { Redirect, Route } from "react-router-dom"
 import LoadingSpinner from "../components/items/LoadingSpinner"
 import { DataContext } from "../contexts/dataContext"
 import { apiURL } from "../utils/VariableName"
@@ -21,33 +21,84 @@ const Contest = (props) => {
 
     const [chooseAnswer,setchooseAnswer] = useState([])
 
-    const find = async (tagor_id) => {
-        const found = await axios.get(`${apiURL}/user/getContest/${tagor_id}`)
-        
-        // console.log(found)
+    const [counter, setCounter] = useState(-1)
 
-        if(!found.data.success) {
+    const submit = async () => {
+        const response = await axios.post(`${apiURL}/user/submitContest`,{
+            _id:dataState.data._id,
+            submitedAnswer:chooseAnswer,
+            type:dataState.data.type
+        })
+
+        if(!response.data.success) {
             setData({
                 loading:false,
-                code:404,
-                data:null
+                code:500,
+                data:response.data.message,
+                finish:true
             })
             return
         }
 
         setData({
-            loading:false,
+            loading: false,
             code:200,
-            data: found.data.payload
+            data:response.data.payload,
+            finish: true
+        })
+    }
+
+    useEffect(() => {
+        const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000)
+        return () => {
+            clearInterval(timer)
+            // console.log(counter)
+            if(counter === 1) submit()
+        }
+    }, [counter])
+
+    const find = async (tagor_id) => {
+        try {
+            const found = await axios.get(`${apiURL}/user/getContest/${tagor_id}`)
+
+            console.log(found.data.payload)
+
+            setData({
+                loading:false,
+                code:200,
+                data: found.data.payload
+            })
+
+            let p=[]
+            for(let i=1; i<found.data.payload.number; i++)
+                p.push(0)
+
+            // console.log(p)
+
+            setchooseAnswer(p)
+        } catch(error) {
+            console.log(error)
+
+            setData({
+                loading:false,
+                code:404,
+                data:error.message
+            })
+        }
+    }
+
+    const generate = async (difficulty) => {
+        const response = await axios.post(`${apiURL}/user/generateContest`,{
+            difficulty:Number(difficulty)
         })
 
-        let p=[]
-        for(let i=1; i<found.data.payload.number; i++)
-            p.push(0)
+        // console.log(response.data.payload)
 
-        // console.log(p)
-
-        setchooseAnswer(p)
+        setData({
+            loading:false,
+            code:200,
+            data: response.data.payload
+        })
     }
 
     useEffect(() => {
@@ -56,11 +107,16 @@ const Contest = (props) => {
             if(tagor_id) {
                 find(tagor_id)
             } else {
-                setData({
-                    loading:false,
-                    code:400,
-                    data:null
-                })
+                const difficulty = props.match.params.difficulty
+                if(difficulty) {
+                    generate(difficulty)
+                } else {
+                    setData({
+                        loading:false,
+                        code:400,
+                        data:null
+                    })
+                }
             }
         }
 
@@ -73,6 +129,12 @@ const Contest = (props) => {
 
     if(dataState.loading) {
         return <LoadingSpinner />
+    }
+
+    if(dataState.code !== 200) {
+        return (
+            <Redirect to='/404' />
+        )
     }
 
     // console.log(dataState)setNewData({ ...newData, [event.target.name]: event.target.value }
@@ -94,45 +156,19 @@ const Contest = (props) => {
 
     const onSubmit = async event => {
 		event.preventDefault()
-		const response = await axios.post(`${apiURL}/user/submitContest`,{
-            _id:dataState.data._id,
-            submitedAnswer:chooseAnswer,
-            type:dataState.data.type
-        })
-        
-        // window.scrollTo(0, 0)
+        await submit()
+	}
 
-
-        // console.log(response)
-
-        if(!response.data.success) {
-            setData({
-                loading:false,
-                code:500,
-                data:response.data.message,
-                finish:true
-            })
-            return
-        }
-
-        setData({
-            loading: false,
-            code:200,
-            data:response.data.payload,
-            finish: true
-        })
-
-        
+    const onClickCounter = async event => {
+		event.preventDefault()
+        setCounter(dataState.data.time*60)
 	}
 
     if(props.match.path === '/contest/new/:difficulty') {
-        const difficulty = props.match.params.difficulty
         body = (
             <>
-                <div>
-                    Tao de moi
-                    {difficulty}
-                </div>
+                {/* <Redirect to={`/contest/${dataState.data}`} /> */}
+                <Route render={() => window.location = `/contest/${dataState.data}`} />
             </>
         )
     } else {
@@ -303,7 +339,31 @@ const Contest = (props) => {
                 )
             } else {
                 // console.log('ren')
-                body = (
+                if(counter === -1) {
+                    body = (
+                        <>
+                            <div className="py-10 text-4xl font-semibold text-center">
+                                    {dataState.data.title}
+                            </div>
+
+                            <div className="shadow-lg p-6 my-3 flex flex-col justify-center text-center content-center">
+                                <div className="text-xl">
+                                    Thông tin đề thi
+                                </div>
+                                <div className="font-light">
+                                    Số câu hỏi: {dataState.data.number-1}
+                                </div>
+                                <div className="font-light">
+                                    Thời gian: {dataState.data.time} phút
+                                </div>
+                                <button type='button' className='mt-3 mx-auto shadow-xl border px-4 py-2 text-center font-bold text-lg w-fit' onClick={onClickCounter}>
+                                    Bắt đầu làm bài
+                                </button>
+                            </div>
+                        </>
+                        
+                    )
+                } else body = (
                     <div className="">  
                         <div>
                             <div className="py-10 text-4xl font-semibold text-center">
@@ -354,7 +414,13 @@ const Contest = (props) => {
                                 Submit
                             </button>
                         </div>
-                        <div className="transition-[width_3s] w-24 hover:w-80 border-orange-400 border-y-2 border-l-2 fixed top-10 right-0 bottom-10 bg-white p-4 overflow-y-auto group ">
+                        <div className="transition-[width_3s] w-24 hover:w-80 border-orange-400 border-y-2 border-l-2 fixed top-10 right-0 bottom-10 bg-white p-4 overflow-y-auto group text-center hover:block flex flex-col justify-center overflow-x-hidden">
+                            <div className="group-hover:text-4xl text-sm text-center mb-3">
+                                {counter===0?'Hết thời gian':`${Math.floor(counter/60)<10?'0':''}${Math.floor(counter/60)}:${counter%60<10?'0':''}${counter%60}`}
+                            </div>
+                            <button type='button' onClick={onSubmit} className='shadow-xl p-1 text-center font-bold text-sm group-hover:text-base mx-auto mb-4'>
+                                Submit
+                            </button>
                             <div className="group-hover:flex flex-wrap gap-2 justify-center hidden">
                                 {
                                     //Array(dataState.data.number-1)
@@ -368,7 +434,6 @@ const Contest = (props) => {
                                         </a>
                                     )
                                 }
-                                
                             </div>
                         </div>
                     </div>

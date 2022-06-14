@@ -70,16 +70,21 @@ const Lesson = (props) => {
         // console.log('abc')
         body = (
             <>
-                <div>
+                <div className="py-10 text-4xl font-semibold text-center">
                     Lessons
                 </div>
                 {
                     lessons.map(q => (
-                        <div>
-                            <div>
-                                Ten: {q.title}
+                        <a href={`/lesson/${q.tag}`}>
+                            <div className="shadow-sm p-6 my-3 flex flex-col justify-center">
+                                <div className="text-lg font-medium">
+                                    {q.title}
+                                </div>
+                                <div className="text-sm font-light">
+                                    {q.content.slice(0,200)} ...
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     ))
                 }
             </>
@@ -90,18 +95,17 @@ const Lesson = (props) => {
             return <Redirect to='/lessons' />
         }
 
-        // console.log(dataState.data)
-
         body = (
             <>
-                <div>
+                <div className="py-10 text-4xl font-semibold text-center">
                     Lesson: {dataState.data.title}
                 </div>
-                
-                <div>
-                    Content: {dataState.data.content}
+
+                <div className="text-sm font-light text-center pb-20">
+                    Bởi: {dataState.data.user.username} lúc {dataState.data.dateCreated}
                 </div>
                 
+                <div dangerouslySetInnerHTML={{__html:dataState.data.content}} />
             </>
         )
         
@@ -110,7 +114,6 @@ const Lesson = (props) => {
     
     return (
         <>
-            Hello
             {body}
         </>
     )
