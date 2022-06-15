@@ -23,11 +23,11 @@ const Landing = () => {
         nav = (
             <>
                 <Link to='/login' class="p-1 mr-2 hover:text-orange-400">
-                    Login
+                    Đăng nhập
                 </Link>
 
                 <Link to='/register' class="bg-orange-400 text-white p-1 rounded-md">
-                    Register
+                    Đăng ký
                 </Link>
             </>
         )
@@ -55,7 +55,7 @@ const Landing = () => {
                                 </div>
 
                                 <div class="my-2 font-light text-base sm:text-sm">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus felis in dictum dictum. Sed a lacinia mauris. Integer efficitur et tellus id elementum.
+                                    Học sinh có thể tin tưởng và lựa chọn kiến thức từ những bài giảng trên website để bổ túc kiến thức Tiếng Anh của mình. Mọi thông tin hoặc tài liệu đều được kiểm tra kỹ lưỡng.
                                 </div>
                             </div>
 
@@ -70,31 +70,31 @@ const Landing = () => {
                             <div class="shadow-md flex flex-col p-6 justify-center items-center rounded-md">
                                 <img src="https://s3-alpha-sig.figma.com/img/bf45/c511/570d5114c2eecbdde183e5be5d88a7a6?Expires=1655683200&Signature=UmLcL41a4ZYllvVA-nadUI2DtUDLyVOFfIeioCPM1gSL072NHEJ7iNjD-~pbvl41uw376N5MRPTOuYGJiGZvd7y-pdQ8sWwpU6oShNt7xeJRzlCON2d19SNO-Y5mUlLwb4fKxtiZoi6KKk0K2ab43pizPHJlReFrr7X0JcaatKhOD3lpEaE5U9L8U3dKJ3fkic3FJYWQH7~~zDDEfGUuN~Jn6WLqmERn7fn9-JP5fL6Fhb1tz1kPYMALLqZXRCunoBTXE1Oau927FQc0FH-XuG62OVf3foEX16GmUe3bM-3BEXzhFHehiwLO9NSOAYuUsn5jQkc3qHvWdiqQ-jCYtA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" />
                                 <div class="text-xl font-semibold py-2">
-                                    Low Minimum Orders
+                                    Chất lượng
                                 </div>
                                 <div class="text-base sm:text-sm text-center font-light">
-                                    Integer aliquam sapien urna, in placerat tellus malesuada ut. Morbi et purus consequat mauris pharetra porttitor. Suspendisse eu quam tincidunt.
+                                    Nguồn đề của website được xây dựng dựa trên các đề minh họa, đề thi chính thức hay đề thi phát triển từ đề minh họa của các trường có uy tín trên cả nước.
                                 </div>
                             </div>
 
                             <div class="shadow-md flex flex-col p-6 justify-center items-center rounded-md">
                                 <img src="https://s3-alpha-sig.figma.com/img/bf45/c511/570d5114c2eecbdde183e5be5d88a7a6?Expires=1655683200&Signature=UmLcL41a4ZYllvVA-nadUI2DtUDLyVOFfIeioCPM1gSL072NHEJ7iNjD-~pbvl41uw376N5MRPTOuYGJiGZvd7y-pdQ8sWwpU6oShNt7xeJRzlCON2d19SNO-Y5mUlLwb4fKxtiZoi6KKk0K2ab43pizPHJlReFrr7X0JcaatKhOD3lpEaE5U9L8U3dKJ3fkic3FJYWQH7~~zDDEfGUuN~Jn6WLqmERn7fn9-JP5fL6Fhb1tz1kPYMALLqZXRCunoBTXE1Oau927FQc0FH-XuG62OVf3foEX16GmUe3bM-3BEXzhFHehiwLO9NSOAYuUsn5jQkc3qHvWdiqQ-jCYtA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" />
                                 <div class="text-xl font-semibold py-2">
-                                    Low Minimum Orders
+                                    Đầy đủ
                                 </div>
                                 <div class="text-base sm:text-sm text-center font-light">
-                                    Integer aliquam sapien urna, in placerat tellus malesuada ut. Morbi et purus consequat mauris pharetra porttitor. Suspendisse eu quam tincidunt.
+                                    Kiến thức được tổng hợp tại website có tính tổng quát cho đến cụ thể, được sắp xếp theo từng chuyên đề, dạng bài. Luôn được cập nhật và chỉnh sửa để luôn là phiên bản tốt nhất cho học sinh.
                                 </div>
                             </div>
 
                             <div class="shadow-md flex flex-col p-6 justify-center items-center rounded-md">
                                 <img src="https://s3-alpha-sig.figma.com/img/bf45/c511/570d5114c2eecbdde183e5be5d88a7a6?Expires=1655683200&Signature=UmLcL41a4ZYllvVA-nadUI2DtUDLyVOFfIeioCPM1gSL072NHEJ7iNjD-~pbvl41uw376N5MRPTOuYGJiGZvd7y-pdQ8sWwpU6oShNt7xeJRzlCON2d19SNO-Y5mUlLwb4fKxtiZoi6KKk0K2ab43pizPHJlReFrr7X0JcaatKhOD3lpEaE5U9L8U3dKJ3fkic3FJYWQH7~~zDDEfGUuN~Jn6WLqmERn7fn9-JP5fL6Fhb1tz1kPYMALLqZXRCunoBTXE1Oau927FQc0FH-XuG62OVf3foEX16GmUe3bM-3BEXzhFHehiwLO9NSOAYuUsn5jQkc3qHvWdiqQ-jCYtA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" />
                                 <div class="text-xl font-semibold py-2">
-                                    Low Minimum Orders
+                                    Miễn phí
                                 </div>
                                 
                                 <div class="text-base sm:text-sm text-center font-light">
-                                    Integer aliquam sapien urna, in placerat tellus malesuada ut. Morbi et purus consequat mauris pharetra porttitor. Suspendisse eu quam tincidunt.
+                                    Học sinh sẽ không cần bỏ thêm một chút tiền nào để sử dụng toàn bộ chức năng trên website. Chỉ cần một tài khoản là có thể làm hàng chục, trăm đề trên website.
                                 </div>
                             </div>
                         </div>
@@ -108,11 +108,11 @@ const Landing = () => {
 
                             <div class="sm:w-1/2 sm:text-left mt-3 sm:mt-0">
                                 <div class="font-semibold text-4xl">
-                                    Praesent ullamcorper sagittis nibh semper ornare.
+                                    Tổng hợp kiến thức đầy đủ
                                 </div>
 
                                 <div class="my-2 font-light text-base sm:text-sm">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus felis in dictum dictum. Sed a lacinia mauris. Integer efficitur et tellus id elementum.
+                                    Mọi kiến thức từ cơ bản đến nâng cao có mặt trong ma trận đề thi của Bộ GD&ĐT giúp học sinh có thể dễ dàng tiếp cận. Ngoài ra, sau mỗi bài học, học sinh hoàn toàn có thể giải quyết các bài tập trắc nghiệm liên quan có trên website.
                                 </div>
 
                                 <div class="my-3">
@@ -130,11 +130,11 @@ const Landing = () => {
                         <div class="flex flex-col-reverse sm:flex-row items-center">
                             <div class="sm:w-1/2 sm:text-left mt-3 sm:mt-0">
                                 <div class="font-semibold text-4xl">
-                                    Praesent ullamcorper sagittis nibh semper ornare.
+                                    Thi thử THPT
                                 </div>
 
                                 <div class="my-2 font-light text-base sm:text-sm">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus felis in dictum dictum. Sed a lacinia mauris. Integer efficitur et tellus id elementum.
+                                    Học sinh có thể sử dụng chức năng tự tạo đề của website, đây là đề được hệ thống tự sinh ngẫu nhiên giúp học sinh được làm những đề mới hoàn toàn, không trùng lặp.
                                 </div>
 
                                 <div class="my-3">
@@ -155,17 +155,17 @@ const Landing = () => {
                     <div class="py-16">
                         <div class="shadow-xl p-6 flex flex-col justify-center items-center">
                             <div class="text-4xl font-semibold">
-                            GET READY?
+                                CÒN CHẦN CHỜ GÌ NỮA?
                             </div>
 
                             <div class="text-2xl font-medium my-3">
-                            THE THPTQG CONTEST IS COMMING SOON!!!
+                                KỲ THI TỐT NGHIỆP THPTQG ĐANG ĐẾN GẦN!
                             </div>
 
                             <div class="">
                                 <a href="#">
                                     <div class="shadow py-4 px-7 w-fit bg-orange-400 text-white border-2 text-3xl font-bold">
-                                        Register now to Testing
+                                        Đăng ký ngay để Thi thử
                                     </div>
                                 </a>
                             </div>

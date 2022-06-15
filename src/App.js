@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Dashboard from './views/Admin'
+import Admin from './views/Admin'
 import Logout from './components/auth/Logout'
 import Auth from './views/Auth'
 import Homepage from './views/Homepage'
@@ -35,7 +35,10 @@ function App() {
               <Route exact path='/' component={Homepage} />
               <Route path='/landing' component={Landing} />
               <Route exact path='/404' component={NotFound} />
-              <AdminRoute path='/admin' component={Dashboard} />
+              <AdminRoute path='/admin/:action' component={Admin} />
+              <AdminRoute path='/admin' component={Admin} />
+              <TeacherRoute path='/teacher/:action/add' component={Teacher} />
+              <TeacherRoute path='/teacher/:action' component={Teacher} />
               <TeacherRoute path='/teacher' component={Teacher} />
               <PublicRoute exact path='/questions' list='true' component={Question} />
               <PublicRoute path='/question/:_id' component={Question} />

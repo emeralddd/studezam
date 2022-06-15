@@ -36,45 +36,57 @@ const LoginForm = () => {
         } 
     }
 
-    return <>
-    <Form onSubmit={login}>
-        <p>
-            Username
-            <span className=' text-fuchsia-600'>{error}</span>
-        </p>
-        
-        <Form.Group className='mb-3'>
-            <Form.Control 
-                type='text' 
-                placeholder='Username'
-                name='username' 
-                required 
-                value={username}
-                onChange={onChangeLoginForm} />
-        </Form.Group>
-        <p>
-            Password
-            <span className=' text-fuchsia-600'>{error}</span>
-        </p>
+    return (
+    <>
+        <div className="min-h-screen bg-[#F8F8F8] flex justify-center items-center">
+            <div className="max-h-[90vh] max-w-[90vw] flex flex-1 shadow-xl rounded-xl bg-white">
+                <img className="object-cover rounded-xl w-1/2" src="https://i.pinimg.com/564x/de/74/86/de7486ca7ebad4a582a22439756d4034.jpg" />
+               
+                <div className="flex flex-col content-around flex-1 rounded-r-md p-8 justify-center gap-2">
+                    <div className="text-4xl mb-3 font-bold">
+                        Login
+                    </div>
 
-        <Form.Group className='mb-3'>
-            <Form.Control 
-                type='password' 
-                placeholder='Password'
-                name='password' 
-                required 
-                value={password}
-                onChange={onChangeLoginForm} />
-        </Form.Group>
-        <Button className='mb-3' variant = 'success' type='submit'>Login</Button>
-    </Form>
+                    <div className="text-xl font-medium" name='username'>
+                        Username
+                        <span className='text-sm text-red-500 ml-3'>
+                            {error}
+                        </span>
+                    </div>
 
-    <p>
-        <Link to='/'>
-            <Button variant = 'info' size='sm' className='ml-2'>Quay Về Trang Chủ</Button>
-        </Link>
-    </p>
-    </>
+                    <div>
+                        <input className="font-light border-2 w-full p-2 rounded-md text-sm" name='username' value={username} onChange={onChangeLoginForm} placeholder="Enter your username" />
+                    </div>
+
+                    <div className="text-xl font-medium">
+                        Password
+                        <span className='text-sm text-red-500 ml-3'>
+                            {error}
+                        </span>
+                    </div>
+
+                    <div>
+                        <input type='password' className="font-light border-2 w-full p-2 rounded-md text-sm mb-3" value={password} name='password' placeholder="Enter your password" onChange={onChangeLoginForm} />
+                    </div>
+
+                    <button type='submit' className="transition duration-300 bg-orange-400 p-2 text-xl text-center rounded-md hover:bg-white border-2 hover:border-orange-300" onClick={login}>
+                        Sign in
+                    </button>
+
+                    <Link to='/register'>
+                        <div className="transition duration-300 border-orange-400 hover:border-white hover:bg-orange-400 border-2 p-2 text-xl text-center rounded-md flex items-center justify-center text-black">
+                            <div className="text-sm">
+                                Don't have account?
+                            </div>
+                            <div className="text-xl ml-1">
+                                Register now
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+            </div>
+        </div>
+    </>)
 }
 
 export default LoginForm

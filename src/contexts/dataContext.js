@@ -40,8 +40,7 @@ const DataContextProvider = ({children}) => {
     const [taskState,dispatchTask] = useReducer(DataReducer, {
         nowTask: {
             tag:'',
-            label:'',
-            thematics:[]
+            label:''
         },
         tasks: [],
         taskLoading: true
@@ -51,7 +50,6 @@ const DataContextProvider = ({children}) => {
         nowThematic: {
             tag:'',
             label:'',
-            questions:[],
             task:''
         },
         thematics: [],
@@ -102,9 +100,9 @@ const DataContextProvider = ({children}) => {
 
     const [stringThematics,setStringThematics] = useState([])
 
-    const [showMemberUpdateModal, setShowMemberUpdateModal] = useState(false)
+    const [showDataUpdateModal, setShowDataUpdateModal] = useState(false)
 	
-	const [showMemberToast, setShowMemberToast] = useState({
+	const [showDataToast, setShowDataToast] = useState({
 		show: false,
 		message: '',
 		type: null
@@ -230,6 +228,7 @@ const DataContextProvider = ({children}) => {
     }
 
     const updateQuestion = async (newData) => {
+        // console.log(newData)
         try {
             const response = await axios.put(`${apiURL}/teacher/updateQuestion`,newData)
 
@@ -239,6 +238,8 @@ const DataContextProvider = ({children}) => {
                     payload: response.data.payload
                 })
             }
+
+            return response.data
         } catch (error) {
             if(error.response.data) {
                 return error.response.data
@@ -286,7 +287,7 @@ const DataContextProvider = ({children}) => {
 
     const addQuestion = async newData => {
         try {
-            const response = await axios.post(`${apiURL}/admin/addQuestion`,newData)
+            const response = await axios.post(`${apiURL}/teacher/addQuestion`,newData)
 
             if(response.data.success) {
                 dispatchQuestion({
@@ -294,6 +295,8 @@ const DataContextProvider = ({children}) => {
                     payload: response.data.payload
                 })
             }
+
+            return response.data
         } catch (error) {
             if(error.response.data) {
                 return error.response.data
@@ -619,10 +622,10 @@ const DataContextProvider = ({children}) => {
         addContest,
         stringTasks,
         stringThematics,
-        showMemberUpdateModal,
-        setShowMemberUpdateModal,
-        showMemberToast,
-        setShowMemberToast,
+        showDataUpdateModal,
+        setShowDataUpdateModal,
+        showDataToast,
+        setShowDataToast,
         
     }
 

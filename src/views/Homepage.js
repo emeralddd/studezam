@@ -38,7 +38,7 @@ const Homepage = () => {
                     <div className="py-16">
                         <div className="shadow-xl p-6 flex flex-col justify-center items-center">
                             <div className="text-4xl font-semibold">
-                                TAO DE NGAY
+                                TẠO ĐỀ TỰ ĐỘNG
                             </div>
 
                             <div className="text-2xl font-medium mt-10">
@@ -52,7 +52,7 @@ const Homepage = () => {
                             <div className="">
                                 <a href={`/contest/new/${dataState*100}`}>
                                     <div className="shadow py-4 px-7 w-fit bg-orange-400 text-white border-2 text-3xl font-bold">
-                                        TAO DE
+                                        TẠO ĐỀ NGAY
                                     </div>
                                 </a>
                             </div>
@@ -61,7 +61,7 @@ const Homepage = () => {
 
                     <div className="py-16">
                         <div className="text-4xl font-semibold">
-                            Nhung de gan day
+                            Đề thi gần đây
                         </div>
 
                         {
@@ -81,13 +81,13 @@ const Homepage = () => {
                                             {c.title}
                                         </div>
                                         <div className="text-lg font-medium">
-                                            So cau hoi: {num}
+                                            Số câu hỏi: {num}
                                         </div>
                                         <div className="text-lg font-medium">
-                                            Thoi gian: {c.time} phut
+                                            Thời gian: {c.time} phút
                                         </div>
                                         <div className="text-lg font-medium">
-                                            Do kho: {c.difficulty}/900
+                                            Độ khó: {c.difficulty}/900
                                         </div>
 
                                         <div className='flex mt-2'>

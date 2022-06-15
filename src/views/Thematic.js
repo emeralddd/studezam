@@ -80,9 +80,6 @@ const Thematic = (props) => {
                                 <div className="text-lg font-medium">
                                     {q.label}
                                 </div>
-                                <div className="text-sm font-light">
-                                    Số câu hỏi: {q.questions.length}
-                                </div>
                             </div>
                         </a>
                         
@@ -96,7 +93,7 @@ const Thematic = (props) => {
             return <Redirect to='/thematics' />
         }
 
-        console.log(dataState.data)
+        // console.log(dataState.data)
 
         body = (
             <>

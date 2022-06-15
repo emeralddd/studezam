@@ -30,8 +30,7 @@ function Auth({authRoute}) {
 
     return (
         <>
-            <div className='bg-gray-100 min-h-screen'>
-                {authRoute}
+            <div className=''>
                 {body}
             </div>
         </>
