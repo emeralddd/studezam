@@ -19,7 +19,7 @@ const UpdateQuestionModal = () => {
         setNewData(nowQuestion)
     }, [nowQuestion])
 
-    const {_id,question,choices,answer,explanation,source,task,thematic,difficulty} = newData
+    const {_id,question,choices,answer,text,explanation,source,task,thematic,difficulty} = newData
 
     const onChangeDataForm = event => setNewData({ ...newData, [event.target.name]: event.target.value })
 
@@ -103,6 +103,10 @@ const UpdateQuestionModal = () => {
                         Chuyên đề
                     </div>
                     <input className="font-light border-2 w-full p-2 rounded-md" type='text' name='thematic' value={thematic} onChange={onChangeDataForm} />
+                    <div className='font-medium text-lg'>
+                        Đoạn văn (với dạng đọc hiểu)
+                    </div>
+                    <input className="font-light border-2 w-full p-2 rounded-md" type='text' name='text' value={text} onChange={onChangeDataForm} />
                     <div className='font-medium text-lg'>
                         Mức độ khó
                     </div>

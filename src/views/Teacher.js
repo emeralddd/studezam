@@ -1,6 +1,8 @@
 import { Link, Redirect } from "react-router-dom"
 import Footer from "../components/layout/Footer"
 import Sidebar from "../components/layout/Sidebar"
+import ContestsManager from "../teacher/ContestsManager"
+import LessonsManager from "../teacher/LessonsManager"
 import QuestionsManager from "../teacher/QuestionsManager"
 
 const Teacher = (props) => {
@@ -26,7 +28,7 @@ const Teacher = (props) => {
                             Quản lý Đoạn văn
                         </div>
                     </Link>
-                    <Link to='/teacher/contestssmanager'>
+                    <Link to='/teacher/contestsmanager'>
                         <div className="transition duration-300 col-start-1 row-start-3 md:col-start-2 md:row-start-1 font-bold text-3xl border-2 border-orange-400 hover:border-white hover:bg-orange-400 hover:text-white p-4 text-center">
                             Quản lý Kỳ thi
                         </div>
@@ -42,8 +44,15 @@ const Teacher = (props) => {
         )
     } else {
         // console.log(props.match.params.action)
-        if(props.match.params.action === 'questionsmanager') body = (<QuestionsManager {...props} />)
-        else body = (<Redirect to='/404' />)
+        
+        if(props.match.params.action === 'questionsmanager') 
+            body = (<QuestionsManager {...props} />)
+        else if(props.match.params.action === 'lessonsmanager') 
+            body = (<LessonsManager {...props} />)
+        else if(props.match.params.action === 'contestsmanager') 
+            body = (<ContestsManager {...props} />)
+        else 
+            body = (<Redirect to='/404' />)
     }
 
     return (

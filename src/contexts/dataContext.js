@@ -407,8 +407,6 @@ const DataContextProvider = ({children}) => {
         try {
             const response = await axios.get(`${apiURL}/public/getLessons`)
 
-            // console.log(response.data)
-
             if(response.data.success) {
                 dispatchLesson({
                     type: LESSON_LOADED_SUCCESS,
@@ -431,6 +429,8 @@ const DataContextProvider = ({children}) => {
                     payload: response.data.payload
                 })
             }
+
+            return response.data
         } catch (error) {
             if(error.response.data) {
                 return error.response.data
@@ -441,9 +441,9 @@ const DataContextProvider = ({children}) => {
         }
     }
 
-    const findLesson = async tag => {
+    const findLesson = async _id => {
         const task = lessonState.lessons.find(t => {
-            return t.tag === tag
+            return t._id === _id
         })
 
         dispatchLesson({
@@ -520,6 +520,8 @@ const DataContextProvider = ({children}) => {
                     payload: response.data.payload
                 })
             }
+
+            return response.data
         } catch (error) {
             if(error.response.data) {
                 return error.response.data
@@ -530,16 +532,12 @@ const DataContextProvider = ({children}) => {
         }
     }
 
-    const findContest = async tag => {
-        console.log(tag)
-
-        console.log(contestState.contests)
-
+    const findContest = async _id => {
         const task = contestState.contests.find(t => {
-            return t.tag === tag
+            return t._id === _id
         })
 
-        console.log(task)
+        // console.log(task)
 
         dispatchContest({
             type: FIND_CONTEST, 
@@ -579,6 +577,8 @@ const DataContextProvider = ({children}) => {
                     payload: response.data.payload
                 })
             }
+
+            return response.data
         } catch (error) {
             if(error.response.data) {
                 return error.response.data

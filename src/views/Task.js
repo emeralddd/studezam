@@ -73,9 +73,6 @@ const Task = (props) => {
                                 <div className="text-lg font-medium">
                                     {q.label}
                                 </div>
-                                <div className="text-sm font-light">
-                                    Số chuyên đề: {q.thematics.length}
-                                </div>
                             </div>
                         </a>
                         

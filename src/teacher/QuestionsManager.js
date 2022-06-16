@@ -35,6 +35,7 @@ const QuestionsManager = (props) => {
         source:'',
         task:'',
         thematic:'',
+        text:'',
         difficulty:0
     })
 
@@ -42,7 +43,7 @@ const QuestionsManager = (props) => {
         return <LoadingSpinner />
     }
 
-    const {question,choices,answer,explanation,source,task,thematic,difficulty} = newData
+    const {question,choices,answer,explanation,source,text,task,thematic,difficulty} = newData
 
     const onSubmit = async event => {
 		event.preventDefault()
@@ -149,6 +150,10 @@ const QuestionsManager = (props) => {
                     Chuyên đề
                 </div>
                 <input className="font-light border-2 w-full p-2 rounded-md" type='text' name='thematic' value={thematic} onChange={onChangeDataForm} />
+                <div className='font-medium text-lg'>
+                    Đoạn văn (với dạng đọc hiểu)
+                </div>
+                <input className="font-light border-2 w-full p-2 rounded-md" type='text' name='text' value={text} onChange={onChangeDataForm} />
                 <div className='font-medium text-lg'>
                     Mức độ khó
                 </div>

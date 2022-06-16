@@ -26,7 +26,9 @@ import {
     FIND_CONTEST,
     UPDATE_CONTEST,
     DELETE_CONTEST,
-    ADD_CONTEST
+    ADD_CONTEST,
+    DELETE_QUESTION,
+    ADD_LESSON
 } from "../utils/VariableName"
 
 export const DataReducer = (state,action) => {
@@ -134,7 +136,7 @@ export const DataReducer = (state,action) => {
                 questions: state.questions.map(q => q._id === payload._id ? payload : q)
             }
 
-        case DELETE_LESSON:
+        case DELETE_QUESTION:
             return {
                 ...state,
                 questions: state.questions.filter(q => q._id !== payload)
@@ -207,19 +209,19 @@ export const DataReducer = (state,action) => {
         case UPDATE_LESSON:
             return {
                 ...state,
-                lessons: state.lessons.map(q => q.tag === payload.tag ? payload : q)
+                lessons: state.lessons.map(q => q._id === payload._id ? payload : q)
             }
 
         case DELETE_LESSON:
             return {
                 ...state,
-                lessons: state.lessons.filter(q => q.tag !== payload)
+                lessons: state.lessons.filter(q => q._id !== payload)
             }
 
-        case ADD_QUESTION:
+        case ADD_LESSON:
             return {
                 ...state,
-                questions: [...state.questions,payload]
+                lessons: [...state.lessons,payload]
             }
 
         case CONTEST_LOADED_SUCCESS:
@@ -245,7 +247,7 @@ export const DataReducer = (state,action) => {
         case UPDATE_CONTEST:
             return {
                 ...state,
-                contests: state.contests.map(q => q.tag === payload.tag ? payload : q)
+                contests: state.contests.map(q => q._id === payload._id ? payload : q)
             }
 
         case DELETE_CONTEST:
