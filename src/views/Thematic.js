@@ -71,7 +71,7 @@ const Thematic = (props) => {
         body = (
             <>
                 <div className="py-10 text-4xl font-semibold text-center">
-                    Thematics
+                    Chuyên đề
                 </div>
                 {
                     thematics.map(q => (
@@ -98,17 +98,21 @@ const Thematic = (props) => {
         body = (
             <>
                 <div className="py-10 text-4xl font-semibold text-center">
-                    Thematic: {dataState.data.label}
+                    Chuyên đề: {dataState.data.label}
                 </div>
                 {
                     dataState.data.questions.map(q => (
                         <a href={`/question/${q._id}`}>
                             <div className="shadow-sm p-6 my-3 flex flex-col justify-center">
                                 <div className="text-lg font-medium">
-                                    {q.question}
+                                    { q.question[0] === ' ' || q.question[0]==='#' ?
+                                        <div dangerouslySetInnerHTML={{__html:q.choices.join(' ')}} />
+                                    :
+                                        <div dangerouslySetInnerHTML={{__html:q.question }}  />
+                                    }
                                 </div>
                                 <div className="text-sm font-light">
-                                    Difficulty: {q.difficulty}/4900
+                                    Mức độ khó: {q.difficulty}/4900
                                 </div>
                             </div>
                         </a>

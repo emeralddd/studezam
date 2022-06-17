@@ -13,7 +13,7 @@ const Homepage = () => {
         getContests
     } = useContext(DataContext)
 
-    const [dataState,setData] = useState(5)
+    const [dataState,setData] = useState(0)
 
     useEffect(() => {
         const action = async () => {
@@ -75,7 +75,7 @@ const Homepage = () => {
 
                                 return (
                                 <div className="flex sm:flex-row flex-col my-5">
-                                    <img className="object-cover h-44 w-64" src='https://s3-alpha-sig.figma.com/img/68bc/291c/6c27f69839cbc92c584cb5b4c8cea925?Expires=1655683200&Signature=LSUc0axazC1YxqaTn5-lodG5fEoVF-wZe-AW0GIeMQvf9z9YvqPNExvwdPBbsxAnKpDFmnLqbQafSjCSpJMKxLBXx4Cf1rrsFEvylCSJw9gbfWBfFgZgSyxqLO5SuhIDk4q9JA1CX3C29h1a1NfgAoUL5VTiFIArCt5a-4IRQRn8nw0AdsUG9RpvmDmF3l~nEj0luGFHNHQwSOch5p5kJFxkK6Rvof8nc0OpqwI253i01kCbCUCb6wjyECtX7iPk5hVR6v1IuEuioYfdiEPkmTatqWSRFTE8rnt9-wC4WtAn~ZtmP-zc2FVx84JhloYqlBTC7OHJh0urvoa2QhbujQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'/>
+                                    <img className="object-cover h-44 w-64" src='https://t3.ftcdn.net/jpg/03/43/43/72/360_F_343437244_HrxIVZWbfh29tgxuRlxbPXEpHMSmfkAn.jpg'/>
                                     <div className="flex flex-col justify-center pl-4">
                                         <div className="text-2xl font-bold">
                                             {c.title}

@@ -27,7 +27,8 @@ const Contest = (props) => {
         const response = await axios.post(`${apiURL}/user/submitContest`,{
             _id:dataState.data._id,
             submitedAnswer:chooseAnswer,
-            type:dataState.data.type
+            type:dataState.data.type,
+            contest:dataState.data
         })
 
         if(!response.data.success) {
@@ -191,7 +192,11 @@ const Contest = (props) => {
                                 </div>
 
                                 <div className="text-lg font-light mb-2">
-                                    <div dangerouslySetInnerHTML={{__html:t.text }}  />
+                                    <div dangerouslySetInnerHTML={{__html:t.text.text }}  />
+                                </div>
+
+                                <div className="text-sm font-light mb-2 text-right">
+                                    <div dangerouslySetInnerHTML={{__html:t.text.source }}  />
                                 </div>
 
                                 {
@@ -255,14 +260,18 @@ const Contest = (props) => {
                                     </div>
 
                                     <div className="text-lg font-light mb-2">
-                                        <div dangerouslySetInnerHTML={{__html:t.text }}  />
+                                        <div dangerouslySetInnerHTML={{__html:t.text.text }}  />
+                                    </div>
+
+                                    <div className="text-sm font-light mb-2 text-right">
+                                        <div dangerouslySetInnerHTML={{__html:t.text.source }}  />
                                     </div>
 
                                     {
                                         t.questions.map(q => (
                                             <>
                                                 <div className="text-lg font-medium pt-2">
-                                                    Question {q.index}. <span dangerouslySetInnerHTML={{__html:q.question }}  />
+                                                    Question {q.index+1}. <span dangerouslySetInnerHTML={{__html:q.question }}  />
                                                 </div>
                                                 
                                                 <div className="text-lg font-light">
@@ -351,7 +360,7 @@ const Contest = (props) => {
                                     Thông tin đề thi
                                 </div>
                                 <div className="font-light">
-                                    Số câu hỏi: {dataState.data.number-1}
+                                    Số câu hỏi: {dataState.data.number}
                                 </div>
                                 <div className="font-light">
                                     Thời gian: {dataState.data.time} phút
@@ -378,7 +387,11 @@ const Contest = (props) => {
                                         </div>
 
                                         <div className="text-lg font-light mb-2">
-                                            <div dangerouslySetInnerHTML={{__html:t.text }}  />
+                                            <div dangerouslySetInnerHTML={{__html:t.text.text }}  />
+                                        </div>
+
+                                        <div className="text-sm font-light mb-2 text-right">
+                                            <div dangerouslySetInnerHTML={{__html:t.text.source }}  />
                                         </div>
 
                                         {
@@ -424,7 +437,7 @@ const Contest = (props) => {
                             <div className="group-hover:flex flex-wrap gap-2 justify-center hidden">
                                 {
                                     //Array(dataState.data.number-1)
-                                    [...Array(dataState.data.number-1)].map((e, i) => 
+                                    [...Array(dataState.data.number)].map((e, i) => 
                                         <a href={`#${i}`} className={`flex text-center w-10 p-2 ${chooseAnswer[i]===0?`bg-orange-400`:`bg-orange-600`} content-center rounded-lg`}>
                                             <div className="text-white font-bold align-middle text-lg">
                                                 {i+1<10?'0':''}{i+1}

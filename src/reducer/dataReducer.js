@@ -28,7 +28,13 @@ import {
     DELETE_CONTEST,
     ADD_CONTEST,
     DELETE_QUESTION,
-    ADD_LESSON
+    ADD_LESSON,
+    TEXT_LOADED_SUCCESS,
+    TEXT_LOADED_FAIL,
+    FIND_TEXT,
+    UPDATE_TEXT,
+    DELETE_TEXT,
+    ADD_TEXT
 } from "../utils/VariableName"
 
 export const DataReducer = (state,action) => {
@@ -260,6 +266,44 @@ export const DataReducer = (state,action) => {
             return {
                 ...state,
                 contests: [...state.contests,payload]
+            }
+        
+        case TEXT_LOADED_SUCCESS:
+            return {
+                ...state,
+                texts: payload,
+                textLoading: false
+            }
+        
+        case TEXT_LOADED_FAIL:
+            return {
+                ...state,
+                texts: [],
+                textLoading: false
+            }
+
+        case FIND_TEXT:
+            return {
+                ...state,
+                nowText:payload
+            }
+            
+        case UPDATE_TEXT:
+            return {
+                ...state,
+                texts: state.texts.map(q => q._id === payload._id ? payload : q)
+            }
+
+        case DELETE_TEXT:
+            return {
+                ...state,
+                texts: state.texts.filter(q => q.tag !== payload)
+            }
+
+        case ADD_TEXT:
+            return {
+                ...state,
+                texts: [...state.texts,payload]
             }
         
         default: 

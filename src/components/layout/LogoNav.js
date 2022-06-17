@@ -25,6 +25,9 @@ const LogoNav = () => {
                 <Link to="/teacher" className="mx-3 rounded-md border-2 border-orange-400 p-1 text-orange-400">
                     Teacher
                 </Link>
+                <Link to='/' className="mr-3 rounded-md border-2 border-orange-400 p-1 text-orange-400">
+                    Trang người dùng
+                </Link>
                 <Link to="/logout" className="rounded-md border-2 border-orange-400 p-1 text-orange-400">
                     Logout
                 </Link>
@@ -37,6 +40,9 @@ const LogoNav = () => {
                 <Link to="/teacher" className="mx-3 rounded-md border-2 border-orange-400 p-1 text-orange-400">
                     Teacher
                 </Link>
+                <Link to='/' className="mr-3 rounded-md border-2 border-orange-400 p-1 text-orange-400">
+                    Trang người dùng
+                </Link>
                 <Link to="/logout" className="rounded-md border-2 border-orange-400 p-1 text-orange-400">
                     Logout
                 </Link>
@@ -46,6 +52,9 @@ const LogoNav = () => {
     if(user.admin === 1) {
         nav = (
             <div className="flex justify-center font-medium">
+                <Link to='/' className="mr-3 rounded-md border-2 border-orange-400 p-1 text-orange-400">
+                    Trang người dùng
+                </Link>
                 <Link to="/logout" className="rounded-md border-2 border-orange-400 p-1 text-orange-400">
                     Logout
                 </Link>

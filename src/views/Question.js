@@ -81,7 +81,7 @@ const Question = (props) => {
                         <a href={`/question/${q._id}`}>
                             <div className="shadow-sm p-6 my-3 flex flex-col justify-center">
                                 <div className="text-lg font-medium">
-                                    { q.question === ' ' || q.question[0]==='#' ?
+                                    { q.question[0] === ' ' || q.question[0]==='#' ?
                                         <div dangerouslySetInnerHTML={{__html:q.choices.join(' ')}} />
                                     :
                                         <div dangerouslySetInnerHTML={{__html:q.question }}  />
@@ -108,12 +108,16 @@ const Question = (props) => {
         body = (
             <>
                 <div className="py-10 text-4xl font-semibold text-center">
-                    Question
+                    Câu hỏi
                 </div>
 
                 <div className="shadow-sm p-6 my-3 flex flex-col justify-center">
                     <div className="text-lg font-light mb-2">
-                        <div dangerouslySetInnerHTML={{__html:dataState.data.text }}  />
+                        <div dangerouslySetInnerHTML={{__html:dataState.data.text.text }}  />
+                    </div>
+
+                    <div className="text-sm font-light mb-2 text-right">
+                        <div dangerouslySetInnerHTML={{__html:dataState.data.text.source }}  />
                     </div>
 
                     <div className="text-xl font-medium">
@@ -152,7 +156,7 @@ const Question = (props) => {
 
                 <div className="transition duration-200 shadow-sm p-6 my-3 flex flex-col justify-center bg-orange-400 text-orange-400 hover:bg-white hover:text-black">
                     <div className="text-xl font-medium">
-                        Đáp án đúng: {char[dataState.data.answer-1]} {dataState.data.choices[dataState.data.answer-1]}
+                        Đáp án đúng: {char[dataState.data.answer-1]}.  <span dangerouslySetInnerHTML={{__html:dataState.data.choices[dataState.data.answer-1] }}  />
                     </div>
                     
                     <div className="text-lg font-light">

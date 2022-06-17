@@ -4,6 +4,7 @@ import Sidebar from "../components/layout/Sidebar"
 import ContestsManager from "../teacher/ContestsManager"
 import LessonsManager from "../teacher/LessonsManager"
 import QuestionsManager from "../teacher/QuestionsManager"
+import TextsManager from "../teacher/TextsManager"
 
 const Teacher = (props) => {
     // console.log(props)
@@ -51,7 +52,9 @@ const Teacher = (props) => {
             body = (<LessonsManager {...props} />)
         else if(props.match.params.action === 'contestsmanager') 
             body = (<ContestsManager {...props} />)
-        else 
+        else if(props.match.params.action === 'textsmanager') 
+            body = (<TextsManager {...props} />)
+        else
             body = (<Redirect to='/404' />)
     }
 

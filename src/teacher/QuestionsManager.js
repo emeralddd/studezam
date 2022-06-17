@@ -65,6 +65,7 @@ const QuestionsManager = (props) => {
             answer:1,
             explanation:'',
             source,
+            text,
             task:'',
             thematic:'',
             difficulty:0

@@ -73,3 +73,15 @@ export const FIND_CONTEST = 'FIND_CONTEST'
 export const DELETE_CONTEST = 'DELETE_CONTEST'
 
 export const ADD_CONTEST = 'ADD_CONTEST'
+
+export const TEXT_LOADED_SUCCESS = 'TEXT_LOADED_SUCCESS'
+
+export const TEXT_LOADED_FAIL = 'TEXT_LOADED_FAIL'
+
+export const UPDATE_TEXT = 'UPDATE_TEXT'
+
+export const FIND_TEXT = 'FIND_TEXT'
+
+export const DELETE_TEXT = 'DELETE_TEXT'
+
+export const ADD_TEXT = 'ADD_TEXT'

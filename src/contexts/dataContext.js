@@ -5,6 +5,7 @@ import {
     ADD_LESSON,
     ADD_QUESTION,
     ADD_TASK,
+    ADD_TEXT,
     ADD_THEMATIC,
     apiURL,
     CONTEST_LOADED_FAIL,
@@ -12,11 +13,13 @@ import {
     DELETE_CONTEST,
     DELETE_LESSON,
     DELETE_TASK,
+    DELETE_TEXT,
     DELETE_THEMATIC,
     FIND_CONTEST,
     FIND_LESSON,
     FIND_QUESTION,
     FIND_TASK,
+    FIND_TEXT,
     FIND_THEMATIC,
     LESSON_LOADED_FAIL,
     LESSON_LOADED_SUCCESS,
@@ -24,12 +27,15 @@ import {
     QUESTION_LOADED_SUCCESS,
     TASK_LOADED_FAIL,
     TASK_LOADED_SUCCESS,
+    TEXT_LOADED_FAIL,
+    TEXT_LOADED_SUCCESS,
     THEMATIC_LOADED_FAIL,
     THEMATIC_LOADED_SUCCESS,
     UPDATE_CONTEST,
     UPDATE_LESSON,
     UPDATE_QUESTION,
     UPDATE_TASK,
+    UPDATE_TEXT,
     UPDATE_THEMATIC
 } from "../utils/VariableName"
 import axios from "axios"
@@ -94,6 +100,17 @@ const DataContextProvider = ({children}) => {
         },
         contests: [],
         contestLoading: true
+    })
+
+    const [textState,dispatchText] = useReducer(DataReducer, {
+        nowText: {
+            text:'',
+            source:'',
+            task:'',
+            difficulty:0
+        },
+        texts: [],
+        textLoading: true
     })
 
     const [stringTasks,setStringTasks] = useState([])
@@ -589,6 +606,101 @@ const DataContextProvider = ({children}) => {
         }
     }
 
+    const getTexts = async () => {
+        try {
+            const response = await axios.get(`${apiURL}/public/getTexts`)
+
+            if(response.data.success) {
+                dispatchText({
+                    type: TEXT_LOADED_SUCCESS,
+                    payload: response.data.payload
+                })
+            }
+        } catch (error) {
+            console.log(error)
+            dispatchText({type: TEXT_LOADED_FAIL})
+        }
+    }
+
+    const updateText = async (newData) => {
+        try {
+            const response = await axios.put(`${apiURL}/teacher/updateText`,newData)
+
+            if(response.data.success) {
+                dispatchText({
+                    type: UPDATE_TEXT,
+                    payload: response.data.payload
+                })
+            }
+
+            return response.data
+        } catch (error) {
+            if(error.response.data) {
+                return error.response.data
+            } else return {
+                success: false,
+                message: error.message
+            }
+        }
+    }
+
+    const findText = async _id => {
+        const task = textState.texts.find(t => {
+            return t._id === _id
+        })
+
+        // console.log(task)
+
+        dispatchText({
+            type: FIND_TEXT, 
+            payload: task
+        })
+
+        return task
+    }
+
+    const deleteText = async tag => {
+        try {
+            const response = await axios.delete(`${apiURL}/teacher/deleteText`,tag)
+
+            if(response.data.success) {
+                dispatchText({
+                    type: DELETE_TEXT,
+                    payload: tag
+                })
+            }
+        } catch (error) {
+            if(error.response.data) {
+                return error.response.data
+            } else return {
+                success: false,
+                message: error.message
+            }
+        }
+    }
+
+    const addText = async newData => {
+        try {
+            const response = await axios.post(`${apiURL}/teacher/addText`,newData)
+
+            if(response.data.success) {
+                dispatchText({
+                    type: ADD_TEXT,
+                    payload: response.data.payload
+                })
+            }
+
+            return response.data
+        } catch (error) {
+            if(error.response.data) {
+                return error.response.data
+            } else return {
+                success: false,
+                message: error.message
+            }
+        }
+    }
+
     const DataContextData = {
         taskState,
         getTasks,
@@ -620,6 +732,12 @@ const DataContextProvider = ({children}) => {
         deleteContest,
         findContest,
         addContest,
+        textState,
+        getTexts,
+        updateText,
+        deleteText,
+        findText,
+        addText,
         stringTasks,
         stringThematics,
         showDataUpdateModal,
