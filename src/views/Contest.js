@@ -277,10 +277,10 @@ const Contest = (props) => {
                                                 <div className="text-lg font-light">
                                                     {
                                                         q.choices.map((t,index) => (
-                                                            chooseAnswer[q.index-1] === index+1 ? (
+                                                            chooseAnswer[q.index] === index+1 ? (
                                                                 <div className="font-bold flex">
                                                                     {
-                                                                        (chooseAnswer[q.index-1] === q.answer) ? (
+                                                                        (chooseAnswer[q.index] === q.answer) ? (
                                                                             <>
                                                                                 <div className="text-green-500">
                                                                                     {char[index]}. <span dangerouslySetInnerHTML={{__html:t }}  /> 

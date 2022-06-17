@@ -30,6 +30,7 @@ const TextsManager = (props) => {
         text:'',
         source:'',
         task:'',
+        number:null,
         difficulty:0
     })
 
@@ -37,7 +38,7 @@ const TextsManager = (props) => {
         return <LoadingSpinner />
     }
 
-    const {text,source,task,difficulty} = newData
+    const {text,source,task,difficulty,number} = newData
 
     const onSubmit = async event => {
 		event.preventDefault()
@@ -114,6 +115,11 @@ const TextsManager = (props) => {
                     Mức độ khó
                 </div>
                 <input className="font-light border-2 w-full p-2 rounded-md" name='difficulty' value={difficulty} min='0' max='900' onChange={onChangeDataForm} />
+
+                <div className='font-medium text-lg'>
+                    Số câu hỏi
+                </div>
+                <input className="font-light border-2 w-full p-2 rounded-md" name='number' value={number} onChange={onChangeDataForm} />
                 
                 <button className='my-3 p-2 rounded text-black border-2 border-orange-400 hover:bg-white bg-orange-400' type='submit' onClick={onSubmit}>
 					Thêm

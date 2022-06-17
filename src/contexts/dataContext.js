@@ -107,6 +107,7 @@ const DataContextProvider = ({children}) => {
             text:'',
             source:'',
             task:'',
+            number:0,
             difficulty:0
         },
         texts: [],
