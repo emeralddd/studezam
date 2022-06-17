@@ -72,6 +72,8 @@ const AuthContextProvider = ({children}) => {
                 localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME,response.data.payload)
             }
 
+            console.log(userForm)
+
             await loadUser()
 
             return response.data

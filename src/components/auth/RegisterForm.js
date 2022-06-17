@@ -51,7 +51,7 @@ const RegisterForm = () => {
                         Register
                     </div>
 
-                    <div className="text-xl font-medium" name='email' value={email} onChange={onChangeregisterForm} >
+                    <div className="text-xl font-medium"  >
                         Email
                         <span className='text-sm text-red-500 ml-3'>
                             {error}
@@ -59,7 +59,7 @@ const RegisterForm = () => {
                     </div>
 
                     <div>
-                        <input className="font-light border-2 w-full p-2 rounded-md" placeholder="Enter your email" />
+                        <input className="font-light border-2 w-full p-2 rounded-md" name='email' value={email} onChange={onChangeregisterForm} placeholder="Enter your email" />
                     </div>
 
                     <div className="text-xl font-medium" name='username'>
