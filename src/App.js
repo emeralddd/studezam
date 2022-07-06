@@ -22,6 +22,8 @@ import Contest from './views/Contest'
 import PublicRoute from './components/routing/PublicRoute'
 import NotFound from './views/NotFound'
 
+import Test from './views/test'
+
 function App() {
   return (
     <AuthContextProvider>
@@ -50,7 +52,10 @@ function App() {
               <PublicRoute exact path='/lessons' component={Lesson} />
               <ProtectedRoute path='/contest/new/:difficulty' component={Contest} />
               <ProtectedRoute path='/contest/:tagor_id/explanation' component={Contest} />
+              <ProtectedRoute path='/contest/:tagor_id/print' component={Contest} />
               <ProtectedRoute path='/contest/:tagor_id' component={Contest} />
+
+              <Route path='/test' component={Test} />
             </Switch>
           </Router>
         </UserContextProvider>

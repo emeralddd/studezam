@@ -5,6 +5,8 @@ import { DataContext } from "../contexts/dataContext"
 import Toast from 'react-bootstrap/Toast'
 import ContestButton from "../components/items/ContestButton"
 import UpdateContestModal from "../components/form/UpdateContestModal"
+import { taskss } from "../utils/SelectData"
+import Select, {createFilter} from "react-select"
 
 const ContestsManager = (props) => {
     const {
@@ -12,21 +14,25 @@ const ContestsManager = (props) => {
             contestLoading,
             contests
         },
+        questionState: {
+            questionLoading,
+            questions
+        },
+        textState: {
+            textLoading,
+            texts
+        },
         getContests,
+        getQuestions,
+        getTexts,
         addContest,
         showDataToast: {
             show,
             message,
             type
         },
-        getTasks,
-        stringTasks,
         setShowDataToast
     } = useContext(DataContext)
-
-    useEffect(() => {
-        getContests()
-    },[])
 
     const [newData, setNewData] = useState({
         tag:'',
@@ -35,7 +41,39 @@ const ContestsManager = (props) => {
         task:[]
     })
 
-    if(contestLoading) {
+    const [taskk, setTaskk] = useState([])
+
+    const [textss,setTextss] = useState([])
+
+    const [questionss,setQuestionss] = useState([])
+
+    useEffect(() => {
+        getContests()
+        getQuestions()
+        getTexts()
+    },[])
+
+    useEffect(() => {
+        const arr = []
+        if(texts.length>0) {
+          for(const i of texts) {
+            arr.push({label:i.text.substring(0,200),value:i._id})
+          }
+          setTextss(arr)
+        }
+    },[texts])
+
+    useEffect(() => {
+        const arr = []
+        if(questions.length>0) {
+          for(const i of questions) {
+            arr.push({label:(i.question === ' ' || i.question[0]==='#' ? i.choices.join(' '):i.question),value:i._id})
+          }
+          setQuestionss(arr)
+        }
+    },[questions])
+
+    if(contestLoading || questionLoading || textLoading) {
         return <LoadingSpinner />
     }
 
@@ -54,58 +92,90 @@ const ContestsManager = (props) => {
 
     const onChangeDataForm = event => setNewData({ ...newData, [event.target.name]: event.target.value })
 
-    const onChangeTask = event => {
+    const onChangeTask = (pos,event) => {
         const tmp = [...newData.task]
-        tmp[Number(event.target.name)].tag=event.target.value
+        const tmp1=[...taskk]
+        
+        tmp[pos].tag=event.value
+        tmp1[pos].task=event 
+
         setNewData({ ...newData, task:tmp})
+        setTaskk(tmp1)
     }
 
-    const onChangeText = event => {
+    const onChangeText = (pos,event) => {
         const tmp = [...newData.task]
-        tmp[Number(event.target.name)].text=event.target.value
+        const tmp1=[...taskk]
+
+        tmp[pos].text=event.value
+        tmp1[pos].text=event
+
         setNewData({ ...newData, task:tmp})
+        setTaskk(tmp1)
     }
 
-    const onChangeQuestion = event => {
+    const onChangeQuestion = (pos,pos1,event) => {
         const tmp = [...newData.task]
-        tmp[Number(event.target.id)].questions[Number(event.target.name)]=event.target.value
+        const tmp1 = [...taskk]
+
+        tmp[pos].questions[pos1]=event.value
+        tmp1[pos].questions[pos1]=event
+
         setNewData({ ...newData, task:tmp})
+        setTaskk(tmp1)
     }
 
     const addTask = () => {
         const tmp = [...newData.task]
+        const tmp1 = [...taskk]
 
         tmp.push({
             tag:'',
             text:'',
             questions:[]
         })
+
+        tmp1.push({
+            task:null,
+            text:null,
+            questions:[]
+        })
         
         setNewData({ ...newData, task:tmp})
+        setTaskk(tmp1)
     }
 
     const addQuestion = (tid) => {
         const tmp = [...newData.task]
+        const tmp1 = [...taskk]
 
         tmp[tid].questions.push('')
+        tmp1[tid].questions.push(null)
         
         setNewData({ ...newData, task:tmp})
+        setTaskk(tmp1)
     }
 
     const deleteTask = (tid) => {
         const tmp = [...newData.task]
+        const tmp1 = [...taskk]
 
         tmp.splice(tid,1)
+        tmp1.splice(tid,1)
         
         setNewData({ ...newData, task:tmp})
+        setTaskk(tmp1)
     }
 
     const deleteQuestion = (tid,qid) => {
         const tmp = [...newData.task]
+        const tmp1 = [...taskk]
 
         tmp[tid].questions.splice(qid,1)
+        tmp1[tid].questions.splice(qid,1)
         
         setNewData({ ...newData, task:tmp})
+        setTaskk(tmp1)
     }
 
     const resetNewData = () => {
@@ -115,6 +185,7 @@ const ContestsManager = (props) => {
             content:'',
             task:[]
         })
+        setTaskk([])
 	}
 
     if(props.match.path === '/teacher/:action/add') {
@@ -185,12 +256,23 @@ const ContestsManager = (props) => {
                             <div className="font-medium">
                                 Tên bài  
                             </div>
-                            <input className="font-light border-2 w-full p-2 rounded-md" type='text' name={i} value={t.tag} onChange={onChangeTask} />
+                            <Select
+                                placeholder='Chọn dạng bài'
+                                options={taskss}
+                                onChange={onChangeTask.bind(this,i)}
+                                value={taskk[i].task}
+                            />
                             
                             <div className="font-medium">
                                 Đoạn bản 
                             </div>
-                            <input className="font-light border-2 w-full p-2 rounded-md" type='text' name={i} value={t.text} onChange={onChangeText} />
+                            <Select
+                                placeholder='Đối với dạng đọc hiểu'
+                                options={textss}
+                                filterOption={createFilter({ ignoreAccents: false })}
+                                onChange={onChangeText.bind(this,i)}
+                                value={taskk[i].text}
+                            />
                             
                             <div className="font-medium">
                                 Câu hỏi 
@@ -199,7 +281,13 @@ const ContestsManager = (props) => {
                             {
                                 t.questions.map((q,j) => (
                                     <div className="flex items-center my-2">
-                                        <input className="font-light border-2 w-full p-2 rounded-md" type='text' name={j} id={i} value={q} onChange={onChangeQuestion} />
+                                        <Select
+                                            placeholder='Chọn câu hỏi'
+                                            options={questionss}
+                                            onChange={onChangeQuestion.bind(this,i,j)}
+                                            value={taskk[i].questions[j]}
+                                            className='w-full'
+                                        />
 
                                         <button className="ml-3 p-2 rounded text-black border-2 border-orange-400 hover:bg-white bg-orange-400" onClick={deleteQuestion.bind(this,i,j)}>
                                             Delete
@@ -231,7 +319,7 @@ const ContestsManager = (props) => {
 
     return (
         <>
-            <UpdateContestModal />
+            <UpdateContestModal questionss={questionss} textss={textss} />
             <Toast
 				show={show}
 				style={{ 
