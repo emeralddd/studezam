@@ -49,10 +49,16 @@ const Homepage = () => {
                                 Độ khó: {dataState*100}/900
                             </div>
 
-                            <div className="">
-                                <a href={`/contest/new/${dataState*100}`}>
-                                    <div className="shadow py-4 px-7 w-fit bg-orange-400 text-white border-2 text-3xl font-bold">
+                            <div className="flex gap-3 justify-center items-center w-full">
+                                <a href={`/contest/new/${dataState*100}`} className='flex-1'>
+                                    <div className="shadow py-4 px-7 bg-orange-400 text-white border-2 text-3xl font-bold">
                                         TẠO ĐỀ NGAY
+                                    </div>
+                                </a>
+
+                                <a href={`/customformat`} className='flex-1'>
+                                    <div className="shadow py-4 px-7 text-orange-400 bg-white border-2 border-orange-400 text-3xl font-bold">
+                                        MA TRẬN KHÁC?
                                     </div>
                                 </a>
                             </div>

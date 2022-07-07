@@ -23,6 +23,7 @@ import PublicRoute from './components/routing/PublicRoute'
 import NotFound from './views/NotFound'
 
 import Test from './views/test'
+import CustomFormat from './views/CustomFormat'
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
               <ProtectedRoute path='/contest/:tagor_id/explanation' component={Contest} />
               <ProtectedRoute path='/contest/:tagor_id/print' component={Contest} />
               <ProtectedRoute path='/contest/:tagor_id' component={Contest} />
+              <ProtectedRoute path='/customformat' component={CustomFormat} />
 
               <Route path='/test' component={Test} />
             </Switch>

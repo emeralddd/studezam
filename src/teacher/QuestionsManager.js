@@ -107,8 +107,6 @@ const QuestionsManager = (props) => {
         explanation:'',
         source,
         text,
-        task:'',
-        thematic:'',
         difficulty:0
       })
 	}
@@ -217,7 +215,7 @@ const QuestionsManager = (props) => {
                 <input className="font-light border-2 w-full p-2 rounded-md" type='number' min='1000' max='4999' name='difficulty' value={difficulty} onChange={onChangeDataForm} />
 
                 <button className='my-3 p-2 rounded text-black border-2 border-orange-400 hover:bg-white bg-orange-400' type='submit' onClick={onSubmit}>
-                  Thêm
+                    Thêm
                 </button>
             </>
         )

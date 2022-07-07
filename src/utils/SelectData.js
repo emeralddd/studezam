@@ -207,3 +207,134 @@ export const thematicss = [
       value: "daongu"
     }
 ]
+
+export const mixed = [
+  {
+    label: "Cách phát âm đuôi -ed",
+    value: "duoied"
+  },
+  {
+    label: "Cách phát âm của nguyên âm",
+    value: "nguyenamphuam"
+  },
+  {
+    label: "Trọng âm của từ 2 âm tiết",
+    value: "2amtiet"
+  },
+  {
+    label: "Trọng âm của từ nhiều hơn 2 âm tiết",
+    value: "nhieuamtiet"
+  },
+  {
+    label: "Câu hỏi đuôi",
+    value: "cauhoiduoi"
+  },
+  {
+    label: "Giới từ",
+    value: "gioitu"
+  },
+  {
+    label: "So sánh kép",
+    value: "sosanhkep"
+  },
+  {
+    label: "Câu bị động",
+    value: "caubidong"
+  },
+  {
+    label: "Trật tự của tính từ",
+    value: "trattutinhtu"
+  },
+  {
+    label: "Thì quá khứ tiếp diễn",
+    value: "qktd"
+  },
+  {
+    label: "Liên từ (MC)",
+    value: "lientu"
+  },
+  {
+    label: "Phối hợp thì",
+    value: "phoihopthi"
+  },
+  {
+    label: "Rút gọn mệnh đề trạng ngữ",
+    value: "mdtn"
+  },
+  {
+    label: "Từ loại",
+    value: "tuloai"
+  },
+  {
+    label: "Cụm động từ",
+    value: "cumdongtu"
+  },
+  {
+    label: "Cụm từ cố định",
+    value: "cumtucodinh"
+  },
+  {
+    label: "Thành ngữ",
+    value: "thanhngu"
+  },
+  {
+    label: "Từ vựng (MC)",
+    value: "tuvung1"
+  },
+  {
+    label: "Từ đơn (C)",
+    value: "tudon1"
+  },
+  {
+    label: "Từ đơn (O)",
+    value: "tudon2"
+  },
+  {
+    label: "Cụm từ hoặc thành ngữ",
+    value: "cumtuthanhngu"
+  },
+  {
+    label: "Tình huống giao tiếp",
+    value: "thgt"
+  },
+  {
+    label: "Thì của động từ",
+    value: "thi"
+  },
+  {
+    label: "Phép quy chiếu",
+    value: "pqc"
+  },
+  {
+    label: "Từ vựng (NC)",
+    value: "tuvung3"
+  },
+  {
+    label: "Chuyển đổi thì",
+    value: "cdt"
+  },
+  {
+    label: "Câu tường thuật",
+    value: "ctt"
+  },
+  {
+    label: "Động từ khuyết thiếu",
+    value: "khuyetthieu"
+  },
+  {
+    label: "Câu ước/câu điều kiện",
+    value: "cauuoccaudieukien"
+  },
+  {
+    label: "Đảo ngữ",
+    value: "daongu"
+  },
+  {
+    label: "Dạng bài: Đọc điền từ",
+    value: "docdientu"
+  },
+  {
+    label: "Dạng bài: Đọc hiểu đoạn văn",
+    value: "dochieudoanvan"
+  }
+]
