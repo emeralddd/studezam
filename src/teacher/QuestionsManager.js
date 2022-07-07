@@ -69,7 +69,7 @@ const QuestionsManager = (props) => {
         return <LoadingSpinner />
     }
 
-    const {question,choices,answer,explanation,source,text,difficulty} = newData
+    const {question,choices,answer,explanation,task,thematic,source,text,difficulty} = newData
 
     const onSubmit = async event => {
 		event.preventDefault()
@@ -105,6 +105,8 @@ const QuestionsManager = (props) => {
         choices:['','','',''],
         answer:1,
         explanation:'',
+        task,
+        thematic,
         source,
         text,
         difficulty:0
