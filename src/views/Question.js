@@ -63,6 +63,7 @@ const Question = (props) => {
     }, [])
     
     // console.log(stringTasks)
+    const level = ['Nhận biết','Thông hiểu','Vận dụng','Vận dụng cao']
 
     if(dataState.loading) {
         return <LoadingSpinner />
@@ -88,7 +89,7 @@ const Question = (props) => {
                                     }
                                 </div>
                                 <div className="text-sm font-light">
-                                    Difficulty: {q.difficulty}/4900
+                                    Mức độ: {level[Math.floor(q.difficulty/1000)-1]}
                                 </div>
                             </div>
                         </a>
@@ -146,7 +147,7 @@ const Question = (props) => {
                     </div>
 
                     <div className="text-sm font-light">
-                        Mức độ khó: {dataState.data.difficulty}/4900
+                        Mức độ: {level[Math.floor(dataState.data.difficulty/1000)-1]}
                     </div>
 
                     <div className="text-sm font-light">

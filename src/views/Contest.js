@@ -86,10 +86,8 @@ const Contest = (props) => {
         }
     }
 
-    const generate = async (difficulty) => {
-        const response = await axios.post(`${apiURL}/user/generateContest`,{
-            difficulty:Number(difficulty)
-        })
+    const generate = async () => {
+        const response = await axios.post(`${apiURL}/user/generateContest`)
 
         setData({
             loading:false,
@@ -104,20 +102,9 @@ const Contest = (props) => {
             if(tagor_id) {
                 find(tagor_id)
             } else {
-                const difficulty = props.match.params.difficulty
-                if(difficulty) {
-                    generate(difficulty)
-                } else {
-                    setData({
-                        loading:false,
-                        code:400,
-                        data:null
-                    })
-                }
+                generate()
             }
         }
-
-        // console.log('hello')
         
         action()
     }, [])
@@ -161,7 +148,7 @@ const Contest = (props) => {
         setCounter(dataState.data.time*60)
 	}
 
-    if(props.match.path === '/contest/new/:difficulty') {
+    if(props.match.path === '/contest/new') {
         body = (
             <Route render={() => window.location = `/contest/${dataState.data}`} />
         )

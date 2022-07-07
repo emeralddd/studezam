@@ -51,7 +51,7 @@ function App() {
               <PublicRoute path='/thematic/:tag' component={Thematic} />
               <PublicRoute path='/lesson/:tag' component={Lesson} />
               <PublicRoute exact path='/lessons' component={Lesson} />
-              <ProtectedRoute path='/contest/new/:difficulty' component={Contest} />
+              <ProtectedRoute path='/contest/new' component={Contest} />
               <ProtectedRoute path='/contest/:tagor_id/explanation' component={Contest} />
               <ProtectedRoute path='/contest/:tagor_id/print' component={Contest} />
               <ProtectedRoute path='/contest/:tagor_id' component={Contest} />

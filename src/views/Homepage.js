@@ -13,8 +13,6 @@ const Homepage = () => {
         getContests
     } = useContext(DataContext)
 
-    const [dataState,setData] = useState(0)
-
     useEffect(() => {
         const action = async () => {
             await getContests()
@@ -22,12 +20,6 @@ const Homepage = () => {
         
         action()
     }, [])
-
-    // console.log(contests)
-
-    const onChangeDataForm = event => {
-        setData(event.target.value)
-    }
 
     return (
         <>
@@ -37,27 +29,19 @@ const Homepage = () => {
 
                     <div className="py-16">
                         <div className="shadow-xl p-6 flex flex-col justify-center items-center">
-                            <div className="text-4xl font-semibold">
+                            <div className="text-4xl font-semibold mb-10">
                                 TẠO ĐỀ TỰ ĐỘNG
                             </div>
 
-                            <div className="text-2xl font-medium mt-10">
-                                <input type="range" value={dataState} min="0" max="9" className="w-40 h-2 rounded-lg appearance-none cursor-pointer border-orange-400 border-2" onChange={onChangeDataForm} />
-                            </div>
-
-                            <div className='font-light mb-10'>
-                                Độ khó: {dataState*100}/900
-                            </div>
-
                             <div className="flex gap-3 justify-center items-center w-full">
-                                <a href={`/contest/new/${dataState*100}`} className='flex-1'>
-                                    <div className="shadow py-4 px-7 bg-orange-400 text-white border-2 text-3xl font-bold">
+                                <a href={`/contest/new`} className='flex-1'>
+                                    <div className="shadow py-4 px-7 bg-orange-400 text-white border-2 text-3xl font-bold text-center">
                                         TẠO ĐỀ NGAY
                                     </div>
                                 </a>
 
                                 <a href={`/customformat`} className='flex-1'>
-                                    <div className="shadow py-4 px-7 text-orange-400 bg-white border-2 border-orange-400 text-3xl font-bold">
+                                    <div className="shadow py-4 px-7 text-orange-400 bg-white border-2 border-orange-400 text-3xl font-bold text-center">
                                         MA TRẬN KHÁC?
                                     </div>
                                 </a>

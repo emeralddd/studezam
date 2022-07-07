@@ -12,6 +12,7 @@ import {
     CONTEST_LOADED_SUCCESS,
     DELETE_CONTEST,
     DELETE_LESSON,
+    DELETE_QUESTION,
     DELETE_TASK,
     DELETE_TEXT,
     DELETE_THEMATIC,
@@ -285,15 +286,17 @@ const DataContextProvider = ({children}) => {
 
     const deleteQuestion = async _id => {
         try {
-            const response = await axios.delete(`${apiURL}/teacher/deleteQuestion`,_id)
-
+            // console.log(_id)
+            const response = await axios.delete(`${apiURL}/teacher/deleteQuestion/${_id}`)
+            // console.log(response)
             if(response.data.success) {
                 dispatchQuestion({
-                    type: DELETE_TASK,
+                    type: DELETE_QUESTION,
                     payload: _id
                 })
             }
         } catch (error) {
+            // console.log(error)
             if(error.response.data) {
                 return error.response.data
             } else return {

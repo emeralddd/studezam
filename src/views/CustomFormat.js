@@ -29,14 +29,30 @@ const CustomFormat = (props) => {
 
     const {time,thematics} = newData
 
+    const generateCustomFormat = async(newData) => {
+        try {
+            const response = await axios.post(`${apiURL}/user/generateCustomFormat`,newData)
+            return response.data
+        } catch (error) {
+            if(error.response.data) {
+                return error.response.data
+            } else return {
+                success: false,
+                message: error.message
+            }
+        }
+    }
+
     const onSubmit = async event => {
 		event.preventDefault()
-		const {success, message} = await axios.post(`${apiURL}/user/generateCustomFormat`,newData)
+        const {success,message} = await generateCustomFormat(newData)
+
         setShowDataToast({ 
             show: true, 
             message, 
             type: success ? 'success' : 'danger' 
         })
+
 		// if(success) resetNewData()
 	}
 
@@ -50,7 +66,7 @@ const CustomFormat = (props) => {
         tmp[pos].thematic=event.value
         tmp1[pos]=event
 
-        setNewData({ ...newData, thematic:tmp})
+        setNewData({ ...newData, thematics:tmp})
         setThematicc(tmp1)
     }
 
@@ -59,7 +75,7 @@ const CustomFormat = (props) => {
 
         tmp[pos1].difficulties[pos2].difficulty=Number(event.target.value)
 
-        setNewData({ ...newData, task:tmp})
+        setNewData({ ...newData, thematics:tmp})
     }
 
     const onChangeDifficultyNumber = (pos1,pos2,event) => {
@@ -67,7 +83,7 @@ const CustomFormat = (props) => {
 
         tmp[pos1].difficulties[pos2].number=Number(event.target.value)
 
-        setNewData({ ...newData, task:tmp})
+        setNewData({ ...newData, thematics:tmp})
     }
 
     const addThematic = () => {
@@ -93,7 +109,7 @@ const CustomFormat = (props) => {
             number: 1
         })
 
-        console.log(tmp)
+        // console.log(tmp)
         
         setNewData({ ...newData, thematics:tmp})
     }
@@ -114,7 +130,7 @@ const CustomFormat = (props) => {
 
         tmp[tid].difficulties.splice(qid,1)
         
-        setNewData({ ...newData, task:tmp})
+        setNewData({ ...newData, thematics:tmp})
     }
 
     const resetNewData = () => {
@@ -189,10 +205,16 @@ const CustomFormat = (props) => {
                                         Số câu hỏi
                                     </div>
 
-                                    <input className="font-light border-2 p-2 rounded-md" type='number' min='1' max='50' value={d.number} onChange={onChangeDifficultyNumber.bind(this,i,j)} disabled={thematicc[i]==='docdientu'||thematicc[i]==='dochieudoanvan'?"true":"false"} />
+                                    {
+                                        (thematics[i].thematic==='docdientu'||thematics[i].thematic==='dochieudoanvan')
+                                        ?
+                                        <input className="font-light border-2 p-2 rounded-md" type='number' min='1' max='50' value={d.number} disabled />
+                                        :
+                                        <input className="font-light border-2 p-2 rounded-md" type='number' min='1' max='50' value={d.number} onChange={onChangeDifficultyNumber.bind(this,i,j)} />
+                                    }
 
                                     <div className="font-medium">
-                                        Mức độ 
+                                        Mức độ
                                     </div>
 
                                     <input className="font-light border-2 p-2 rounded-md" type='number' min='1000' max='4000' step='1000' value={d.difficulty} onChange={onChangeDifficulty.bind(this,i,j)} />
@@ -204,10 +226,17 @@ const CustomFormat = (props) => {
                                 
                             ))
                         }
-
-                            <button className="mt-3 p-2 rounded text-black border-2 border-orange-400 hover:bg-white bg-orange-400" onClick={addDifficulty.bind(this,i)} disabled={(thematicc[i]==='docdientu'||thematicc[i]==='dochieudoanvan')?"true":"false"}>
-                                Thêm mức độ
-                            </button>
+                            {
+                                (thematics[i].thematic==='docdientu'||thematics[i].thematic==='dochieudoanvan')&&thematics[i].difficulties.length>0
+                                ?
+                                <button className="mt-3 p-2 rounded text-black border-2 border-orange-400 hover:bg-white bg-orange-400" disabled>
+                                    Thêm mức độ
+                                </button>
+                                :
+                                <button className="mt-3 p-2 rounded text-black border-2 border-orange-400 hover:bg-white bg-orange-400" onClick={addDifficulty.bind(this,i)}>
+                                    Thêm mức độ
+                                </button>
+                            }
                     </div>
                 ))
             }
