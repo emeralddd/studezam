@@ -2,10 +2,8 @@ import axios from "axios"
 import { useEffect } from "react"
 import { useState } from "react"
 import { useContext } from "react"
-import { Link, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 import LoadingSpinner from "../components/items/LoadingSpinner"
-import Footer from "../components/layout/Footer"
-import NavbarUI from "../components/layout/NavbarUI"
 import { DataContext } from "../contexts/dataContext"
 import { apiURL } from "../utils/VariableName"
 
@@ -60,7 +58,7 @@ const Question = (props) => {
         
         action()
 
-    }, [])
+    },[])
     
     // console.log(stringTasks)
     const level = ['Nhận biết','Thông hiểu','Vận dụng','Vận dụng cao']

@@ -49,7 +49,7 @@ const UserContextProvider = ({children}) => {
     }
 
     const editUser = async newData => {
-        console.log(newData)
+        // console.log(newData)
 
         try {
             const response = await axios.put(`${apiURL}/admin/editUser`,newData)

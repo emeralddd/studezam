@@ -32,7 +32,7 @@ const NavbarUI = () => {
             <div className="mt-3 flex justify-around text-center">
                 {
                     navlist.map(nav => (
-                        <Link to={nav.href} className="transition duration-200 border-2 border-transparent hover:border-b-orange-400 text-black">
+                        <Link to={nav.href} key={nav.href} className="transition duration-200 border-2 border-transparent hover:border-b-orange-400 text-black">
                             {nav.name}
                         </Link>
                     ))

@@ -78,44 +78,6 @@ export const DataReducer = (state,action) => {
                 tasks: [...state.tasks,payload]
             }
 
-        case TASK_LOADED_SUCCESS:
-            return {
-                ...state,
-                tasks: payload,
-                taskLoading: false
-            }
-        
-        case TASK_LOADED_FAIL:
-            return {
-                ...state,
-                tasks: [],
-                taskLoading: false
-            }
-
-        case FIND_TASK:
-            return {
-                ...state,
-                nowTask:payload
-            }
-            
-        case UPDATE_TASK:
-            return {
-                ...state,
-                tasks: state.tasks.map(task => task.tag === payload.tag ? payload : task)
-            }
-
-        case DELETE_TASK:
-            return {
-                ...state,
-                tasks: state.tasks.filter(task => task.tag !== payload)
-            }
-
-        case ADD_TASK:
-            return {
-                ...state,
-                tasks: [...state.tasks,payload]
-            }
-
         case QUESTION_LOADED_SUCCESS:
             return {
                 ...state,

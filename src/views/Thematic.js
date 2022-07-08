@@ -42,7 +42,7 @@ const Thematic = (props) => {
     useEffect(() => {
         const action = async () => {
             await getThematics()
-            console.log(props.match.params.tag)
+            // console.log(props.match.params.tag)
             if(props.match.params.tag) {
                 find(props.match.params.tag)
             } else {

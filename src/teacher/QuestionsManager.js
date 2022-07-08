@@ -5,7 +5,6 @@ import LoadingSpinner from "../components/items/LoadingSpinner"
 import QuestionButtons from "../components/items/QuestionButtons"
 import { DataContext } from "../contexts/dataContext"
 import Toast from 'react-bootstrap/Toast'
-import AlertMessage from "../components/layout/AlertMessage"
 import Select from 'react-select'
 import { taskss, thematicss } from "../utils/SelectData"
 

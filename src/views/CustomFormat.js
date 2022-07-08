@@ -5,6 +5,7 @@ import Select from "react-select"
 import { mixed } from "../utils/SelectData"
 import axios from "axios"
 import { apiURL } from "../utils/VariableName"
+import { Route } from "react-router-dom"
 
 const CustomFormat = (props) => {
     const {
@@ -22,6 +23,8 @@ const CustomFormat = (props) => {
     })
 
     const [thematicc, setThematicc] = useState([])
+
+    const [finish,setFinish] = useState(null)
 
     useEffect(() => {
 
@@ -45,15 +48,18 @@ const CustomFormat = (props) => {
 
     const onSubmit = async event => {
 		event.preventDefault()
-        const {success,message} = await generateCustomFormat(newData)
-
+        const {success,message,payload} = await generateCustomFormat(newData)
+        
+        if(success) {
+            setFinish(payload)
+            resetNewData()
+            return
+        }
         setShowDataToast({ 
-            show: true, 
+            show: true,
             message, 
             type: success ? 'success' : 'danger' 
         })
-
-		// if(success) resetNewData()
 	}
 
     const onChangeDataForm = event => setNewData({ ...newData, [event.target.name]: event.target.value })
@@ -140,6 +146,12 @@ const CustomFormat = (props) => {
         })
         setThematicc([])
 	}
+
+    if(finish) {
+        return (
+            <Route render={() => window.location = `/contest/${finish}`} />
+        )
+    }
 
     return (
         <>

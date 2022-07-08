@@ -32,7 +32,7 @@ const LoginForm = () => {
             }
         } catch (error) {
             setError(error)
-            console.log(error)
+            // console.log(error)
         } 
     }
 

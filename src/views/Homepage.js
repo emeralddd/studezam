@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
-import { useState } from 'react'
 import { useContext } from 'react'
-import { Link, Redirect } from 'react-router-dom'
-import LoadingSpinner from '../components/items/LoadingSpinner'
+import { Link } from 'react-router-dom'
 import Footer from '../components/layout/Footer'
 import NavbarUI from '../components/layout/NavbarUI'
 import { DataContext } from '../contexts/dataContext'
@@ -19,7 +17,7 @@ const Homepage = () => {
         }
         
         action()
-    }, [])
+    },[])
 
     return (
         <>
@@ -64,8 +62,8 @@ const Homepage = () => {
                                 }
 
                                 return (
-                                <div className="flex sm:flex-row flex-col my-5">
-                                    <img className="object-cover h-44 w-64" src='https://t3.ftcdn.net/jpg/03/43/43/72/360_F_343437244_HrxIVZWbfh29tgxuRlxbPXEpHMSmfkAn.jpg'/>
+                                <div className="flex sm:flex-row flex-col my-5" key={c.title}>
+                                    <img className="object-cover h-44 w-64" src='https://t3.ftcdn.net/jpg/03/43/43/72/360_F_343437244_HrxIVZWbfh29tgxuRlxbPXEpHMSmfkAn.jpg' alt='contest' />
                                     <div className="flex flex-col justify-center pl-4">
                                         <div className="text-2xl font-bold">
                                             {c.title}
@@ -76,19 +74,16 @@ const Homepage = () => {
                                         <div className="text-lg font-medium">
                                             Thời gian: {c.time} phút
                                         </div>
-                                        <div className="text-lg font-medium">
-                                            Độ khó: {c.difficulty}/900
-                                        </div>
 
                                         <div className='flex mt-2'>
                                             <Link to={`/contest/${c.tag}`}>
-                                                <div class="shadow py-2 px-3 w-fit text-orange-400 hover:bg-orange-400 hover:text-white border-2 font-bold">
+                                                <div className="shadow py-2 px-3 w-fit text-orange-400 hover:bg-orange-400 hover:text-white border-2 font-bold">
                                                     Thi thử
                                                 </div>
                                             </Link>
 
                                             <Link to={`/contest/${c.tag}/explanation`}>
-                                                <div class="shadow py-2 px-3 w-fit text-orange-400 hover:bg-orange-400 hover:text-white border-2 font-bold ml-2">
+                                                <div className="shadow py-2 px-3 w-fit text-orange-400 hover:bg-orange-400 hover:text-white border-2 font-bold ml-2">
                                                     Xem hướng dẫn
                                                 </div>
                                             </Link>

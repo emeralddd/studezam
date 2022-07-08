@@ -31,10 +31,10 @@ const UpdateLessonModal = () => {
         setNewData({ ...newData, [event.target.name]: event.target.value})
     }
 
-    const onChangeContent = event => {
-        console.log(convertFromRaw(event))
-        console.log(draftToHtml(convertFromRaw(event)))
-    }
+    // const onChangeContent = event => {
+    //     console.log(convertFromRaw(event))
+    //     console.log(draftToHtml(convertFromRaw(event)))
+    // }
 
     const onSubmit = async event => {
 		event.preventDefault()

@@ -140,7 +140,7 @@ const PrintContest = ({dataState}) => {
 
         // console.log(`${index}   ${question[0]===' '}`)
 
-        if(question[0]==='#' || question[0]===' ') {
+        if(question[0]==='#' || question===' ') {
             if(maxLength<=120) {
                 // console.log(index)
                 res.push(

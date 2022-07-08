@@ -1,4 +1,5 @@
 const Timer = ({ counter, chooseAnswer, dataState, onSubmit }) => {
+    // console.log(dataState.data.number)
     return (
         <>
             <div className="transition-[width_3s] w-24 hover:w-80 border-orange-400 border-y-2 border-l-2 fixed top-10 right-0 bottom-10 bg-white p-4 overflow-y-auto group text-center hover:block flex flex-col justify-center overflow-x-hidden">

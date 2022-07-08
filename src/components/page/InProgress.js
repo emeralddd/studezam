@@ -38,7 +38,7 @@ const InProgress = ({ dataState, onSubmit, counter, onChangeDataForm, chooseAnsw
                                             <div className="text-lg font-light">
                                                 {
                                                     q.choices.map((t,index) => (
-                                                        <div>
+                                                        <div key={index}>
                                                             <input type="radio" name={q.index} value={index} id={`${index}-${q.index}`} onChange={onChangeDataForm} className='h-3 bg-orange-400' />
                                                             <label className='ml-2' htmlFor={`${index}-${q.index}`}>
                                                                 {char[index]}. <span dangerouslySetInnerHTML={{__html:t }}  />

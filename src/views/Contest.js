@@ -1,12 +1,9 @@
 import axios from "axios"
 import { useEffect } from "react"
 import { useState } from "react"
-import { useContext } from "react"
 import { Redirect, Route } from "react-router-dom"
 import LoadingSpinner from "../components/items/LoadingSpinner"
-import { DataContext } from "../contexts/dataContext"
 import { apiURL } from "../utils/VariableName"
-import ScrollToTop from "../components/routing/ScrollToTop"
 import Explanation from "../components/page/Explanation"
 import InProgress from "../components/page/InProgress"
 import { WaitingContest } from "../components/page/WaitingContest"
@@ -33,6 +30,8 @@ const Contest = (props) => {
             type:dataState.data.type,
             contest:dataState.data
         })
+
+        // console.log(response.data.success)
 
         if(!response.data.success) {
             setData({
@@ -67,11 +66,12 @@ const Contest = (props) => {
             setData({
                 loading:false,
                 code:200,
-                data: found.data.payload
+                data: found.data.payload,
+                finish:false
             })
 
             let p=[]
-            for(let i=1; i<found.data.payload.number; i++)
+            for(let i=0; i<found.data.payload.number; i++)
                 p.push(0)
 
             setchooseAnswer(p)
@@ -107,7 +107,7 @@ const Contest = (props) => {
         }
         
         action()
-    }, [])
+    },[])
     
     // console.log(contests)
 

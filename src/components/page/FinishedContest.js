@@ -109,7 +109,7 @@ const FinishedContest = ({dataState, chooseAnswer }) => {
                     </>
                 ))
             }
-            <button type='button' className='transition duration-200 shadow-xl border px-4 py-2 text-center font-bold text-lg'>
+            <button type='button' className='transition duration-200 bg-white right-10 fixed bottom-10 shadow-xl border px-4 py-2 text-center font-bold text-lg'>
                 <a href="#top" className="text-black">
                     Xem điểm
                 </a>
