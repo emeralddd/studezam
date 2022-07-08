@@ -30,15 +30,14 @@ const TextsManager = (props) => {
         text:'',
         source:'',
         task:'',
-        number:null,
-        difficulty:0
+        number:null
     })
 
     if(textLoading) {
         return <LoadingSpinner />
     }
 
-    const {text,source,task,difficulty,number} = newData
+    const {text,source,task,number} = newData
 
     const onSubmit = async event => {
 		event.preventDefault()
@@ -57,8 +56,7 @@ const TextsManager = (props) => {
 		setNewData({
             text:'',
             source:'',
-            task:'',
-            difficulty:0
+            task:''
         })
 	}
 
@@ -112,11 +110,6 @@ const TextsManager = (props) => {
                 <input className="font-light border-2 w-full p-2 rounded-md" name='task' value={task} onChange={onChangeDataForm} />
 
                 <div className='font-medium text-lg'>
-                    Mức độ khó
-                </div>
-                <input className="font-light border-2 w-full p-2 rounded-md" name='difficulty' value={difficulty} min='0' max='900' onChange={onChangeDataForm} />
-
-                <div className='font-medium text-lg'>
                     Số câu hỏi
                 </div>
                 <input className="font-light border-2 w-full p-2 rounded-md" name='number' value={number} onChange={onChangeDataForm} />
@@ -164,15 +157,14 @@ const TextsManager = (props) => {
                 <thead className="bg-orange-300">
                     <tr>
                         <th className="px-2">Đoạn văn</th>
-                        <th className="w-[15%]">Dạng bài</th>
-                        <th className="w-[15%]">Mức độ khó</th>
+                        <th className="w-[25%]">Dạng bài</th>
                         <th className="w-[10%]"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        texts.map(q => (
-                            <tr className="border-2">
+                        texts.map((q,i) => (
+                            <tr className="border-2" key={i}>
                                 <td className="border text-left">
                                     {q.text.slice(0,500)} ...
                                 </td>
@@ -182,7 +174,7 @@ const TextsManager = (props) => {
                                 </td>
 
                                 <td className="border">
-                                    {q.difficulty}
+                                    {q.number}
                                 </td>
 
                                 <td className="border">

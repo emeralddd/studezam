@@ -41,7 +41,7 @@ const UpdateContestModal = ({questionss,textss}) => {
         setOld(tmp2)
     }, [nowContest])
 
-    const {_id,tag,title,time,difficulty,task} = newData
+    const {_id,tag,title,time,task} = newData
 
     const onChangeDataForm = event => setNewData({ ...newData, [event.target.name]: event.target.value })
 
@@ -184,11 +184,6 @@ const UpdateContestModal = ({questionss,textss}) => {
                         Thời gian
                     </div>
                     <input className="font-light border-2 w-full p-2 rounded-md" type='number' name='time' min='0' value={time} onChange={onChangeDataForm} />
-
-                    <div className='font-medium text-lg'>
-                        Mức độ khó
-                    </div>
-                    <input className="font-light border-2 w-full p-2 rounded-md" type='number' name='difficulty' min='0' max='900' value={difficulty} onChange={onChangeDataForm} />
 
                     <div className='font-medium text-lg'>
                         Bài tập

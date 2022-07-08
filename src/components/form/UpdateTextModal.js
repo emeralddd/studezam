@@ -25,7 +25,7 @@ const UpdateTextModal = () => {
         setNewData(nowText)
     }, [nowText])
 
-    const {_id,text,source,task,difficulty,number} = newData
+    const {_id,text,source,task,number} = newData
 
     const onChangeDataForm = event => {
         setNewData({ ...newData, [event.target.name]: event.target.value})
@@ -85,11 +85,6 @@ const UpdateTextModal = () => {
                         Dạng bài
                     </div>
                     <input className="font-light border-2 w-full p-2 rounded-md" name='task' value={task} onChange={onChangeDataForm} />
-
-                    <div className='font-medium text-lg'>
-                        Mức độ khó
-                    </div>
-                    <input className="font-light border-2 w-full p-2 rounded-md" name='difficulty' value={difficulty} min='0' max='900' onChange={onChangeDataForm} />
 
                     <div className='font-medium text-lg'>
                         Số câu hỏi

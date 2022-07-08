@@ -96,7 +96,6 @@ const DataContextProvider = ({children}) => {
             tag:'',
             title:'',
             time:'',
-            difficulty:0,
             task:[]
         },
         contests: [],
@@ -108,8 +107,7 @@ const DataContextProvider = ({children}) => {
             text:'',
             source:'',
             task:'',
-            number:0,
-            difficulty:0
+            number:0
         },
         texts: [],
         textLoading: true

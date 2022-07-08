@@ -238,11 +238,6 @@ const ContestsManager = (props) => {
                 <input className="font-light border-2 w-full p-2 rounded-md" type='number' name='time' min='0' value={time} onChange={onChangeDataForm} />
 
                 <div className='font-medium text-lg'>
-                    Mức độ khó
-                </div>
-                <input className="font-light border-2 w-full p-2 rounded-md" type='number' name='difficulty' min='0' max='900' value={difficulty} onChange={onChangeDataForm} />
-
-                <div className='font-medium text-lg'>
                     Bài tập
                 </div>
 
@@ -352,10 +347,9 @@ const ContestsManager = (props) => {
             <table className="table-fixed w-full border-2 border-collapse text-center">
                 <thead className="bg-orange-300">
                     <tr>
-                        <th className="w-[15%]">Tag</th>
+                        <th className="w-[20%]">Tag</th>
                         <th className="px-2">Tiêu đề</th>
                         <th className="w-[15%]">Thời gian</th>
-                        <th className="w-[15%]">Độ khó</th>
                         <th className="w-[10%]"></th>
                     </tr>
                 </thead>
@@ -373,10 +367,6 @@ const ContestsManager = (props) => {
 
                                 <td className="border">
                                     {q.time}
-                                </td>
-
-                                <td className="border">
-                                    {q.difficulty}
                                 </td>
 
                                 <td className="border">
