@@ -1,0 +1,9 @@
+{
+  "short_name": "STUDEZAM",
+  "name": "Tổng hợp kiến thức & Thi thử THPTQG | Studezam",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

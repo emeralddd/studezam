@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fe041d25.css",
+    "main.js": "/static/js/main.e9d65e94.js",
+    "static/js/787.45611b65.chunk.js": "/static/js/787.45611b65.chunk.js",
+    "index.html": "/index.html",
+    "static/media/blockquote-left.svg": "/static/media/blockquote-left.ea71851e5f7a6028fe46.svg",
+    "static/media/patch-check.svg": "/static/media/patch-check.ae73ce3ba418d5aeddb5.svg",
+    "static/media/stars.svg": "/static/media/stars.7c6d945c7925e12df938.svg",
+    "static/media/speedometer2.svg": "/static/media/speedometer2.29398139c154b198855d.svg",
+    "static/media/people.svg": "/static/media/people.d75289daeb041c463c10.svg",
+    "static/media/clipboard-check.svg": "/static/media/clipboard-check.679c3590a6fc549a004d.svg",
+    "static/media/list-task.svg": "/static/media/list-task.1953b76ecc75200011dc.svg",
+    "static/media/newspaper.svg": "/static/media/newspaper.bafd3da9874eb2d1387a.svg",
+    "static/media/key.svg": "/static/media/key.29f7fad9564e0d7c87eb.svg",
+    "static/media/pencil-square.svg": "/static/media/pencil-square.1bd74fe21bfba125243d0325c9300f0c.svg",
+    "static/media/trash.svg": "/static/media/trash.d55ba7a6c87c02d88d37de2110530e0e.svg",
+    "static/media/person-check.svg": "/static/media/person-check.8dbd5fb3986f32be543f.svg",
+    "static/media/card-text.svg": "/static/media/card-text.b73260c8e5f6dfe8c358.svg",
+    "static/media/x-square.svg": "/static/media/x-square.009959ea315f430a0246.svg",
+    "static/media/check2-square.svg": "/static/media/check2-square.c602898f4d0f083351c2.svg",
+    "static/media/graph-up.svg": "/static/media/graph-up.5fa409c26d2b00068af8.svg",
+    "static/media/person.svg": "/static/media/person.1694d0ed32ad6aedeaf4.svg",
+    "static/media/x-lg.svg": "/static/media/x-lg.74600f6d42d7b7962402b3dc6b2f97b0.svg",
+    "static/media/eye-fill.svg": "/static/media/eye-fill.9fcb37b768b0c9dedbe7.svg",
+    "static/media/check2.svg": "/static/media/check2.61bf7dfc7dd9ad4dd0d496cfc1bea71b.svg",
+    "main.fe041d25.css.map": "/static/css/main.fe041d25.css.map",
+    "main.e9d65e94.js.map": "/static/js/main.e9d65e94.js.map",
+    "787.45611b65.chunk.js.map": "/static/js/787.45611b65.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe041d25.css",
+    "static/js/main.e9d65e94.js"
+  ]
+}
