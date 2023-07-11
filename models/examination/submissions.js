@@ -2,7 +2,7 @@ const mongo = require('mongoose');
 const Schema = mongo.Schema;
 
 const Submission = new Schema({
-    username: {
+    createdBy: {
         type: Schema.Types.ObjectId,
         required: true,
     },

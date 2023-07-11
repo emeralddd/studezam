@@ -5,6 +5,7 @@ const Question = new Schema({
     slug: {
         type: String,
         required: true,
+        unique: true,
     },
     body: {
         type: String,

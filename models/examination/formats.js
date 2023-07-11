@@ -1,22 +1,18 @@
 const mongo = require('mongoose')
 const Schema = mongo.Schema
 
-const CContest = new Schema({
-    createdBy: {
+const Contest = new Schema({
+    tag: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
-    dateCreated: {
-        type: Date,
-        default: Date.now(),
+    title: {
+        type: String,
         required: true
     },
     time: {
         type: Number,
-        required: true
-    },
-    title: {
-        type: String,
         required: true
     },
     task: [{
@@ -26,4 +22,4 @@ const CContest = new Schema({
     }]
 }
 )
-module.exports = mongo.model('ccontests', CContest)
+module.exports = mongo.model('contests', Contest)

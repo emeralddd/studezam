@@ -26,7 +26,7 @@ const User = new Schema({
         required: true,
     },
     permissions: {
-        type: [Schema.Types.ObjectId],
+        type: [Number],
         required: true,
     },
     displayName: {
